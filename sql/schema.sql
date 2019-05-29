@@ -21,10 +21,11 @@ CREATE TABLE events (
 );
 
 CREATE TABLE location (
-    id int
+    id int,
+    name varchar(100) 
 );
 
-CREATE TABLE privateUser (
+CREATE TABLE private_user (
     id int,
     fk_user_id int,
     fk_events_id int
