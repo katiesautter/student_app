@@ -19,12 +19,12 @@ VALUES ('1', 'Game Night', current_timestamp, '1');
 INSERT INTO events
 VALUES ('2', 'Capture the Flag', current_timestamp, '2'); 
 
-INSERT INTO location 
+INSERT INTO locations 
 VALUES ('1', 'Shrader');
 
-INSERT INTO location 
+INSERT INTO locations 
 VALUES ('2', 'Wolly lawn');
 
-INSERT INTO private_user 
+INSERT INTO private_events_users 
 VALUES ('1', '2', '1');
 
