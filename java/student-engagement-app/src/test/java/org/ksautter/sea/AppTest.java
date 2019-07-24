@@ -1,4 +1,7 @@
-package org.ksautter;
+package org.ksautter.sea;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -28,16 +31,18 @@ public class AppTest
         return new TestSuite( AppTest.class );
     }
 
-    /**
-     * Rigourous Test :-)
-     */
+    
     public void testApp()
     {
         assertTrue( true );
     }
     
-    public void test()
+    public void testUsers()
     {
-    	  throw new RuntimeException();
+    	  SessionFactory sf = HibernateUtil.getSessionFactory();
+          Session session = sf.openSession();
+          session.beginTransaction();
+          User user = session.get(User.class, 1);
+          assertTrue(user != null);
     }
 }
