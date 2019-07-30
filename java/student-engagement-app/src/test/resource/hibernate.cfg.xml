@@ -13,9 +13,13 @@
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
         <property name="hibernate.connection.url">jdbc:postgresql://127.0.0.1:5432/sea</property>
         <property name="hibernate.connection.username">ksautter</property>
-        <property name="hibernate.connection.password"></property>
+        <property name="hibernate.connection.password">4boodles</property>
  
         <!-- add classes to map from here -->
         <mapping class="org.ksautter.sea.User" />
+       <!-- <mapping class="org.ksautter.sea.Post" />
+        <mapping class="org.ksautter.sea.Event" />
+        <mapping class="org.ksautter.sea.Location" />
+        <mapping class="org.ksautter.sea.PrivateEventUser" /> -->
     </session-factory>
 </hibernate-configuration>

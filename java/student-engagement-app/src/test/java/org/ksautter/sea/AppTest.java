@@ -44,5 +44,6 @@ public class AppTest
           session.beginTransaction();
           User user = session.get(User.class, 1);
           assertTrue(user != null);
+          assertEquals( user.getId(), 1);
     }
 }

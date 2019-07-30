@@ -2,6 +2,7 @@ package org.ksautter.sea;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
@@ -19,6 +20,7 @@ public User(String uname, String pword) {
    this.password = pword;
 }
 
+@Id
 @Column
 public int getId() {
    return id;
