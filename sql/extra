@@ -1,0 +1,45 @@
+INSERT INTO posts VALUES ('Lax Night', '1', '5'); 
+
+INSERT INTO posts VALUES ('Capture the Flag', ???, '2'); 
+
+INSERT INTO posts VALUES ('Capture the Flag', '1', '2'); 
+
+INSERT INTO events VALUES ('Capture the Flag', 'public', current_timestamp, '2'); 
+
+INSERT INTO events VALUES ('Movie Night', 'private', current_timestamp, '1'); 
+
+INSERT INTO events VALUES ('Talent Show', 'private', current_timestamp, '2'); 
+
+INSERT INTO events VALUES ('Lacrosse Night!', 'private', current_timestamp, '2'); 
+
+INSERT INTO private_events_users VALUES ('2', '3');
+
+INSERT INTO users VALUES ('beccathorne', 'buckyb'); 
+
+INSERT INTO users VALUES ('codycook', 'bigbear27'); 
+
+
+INSERT INTO posts VALUES ('Come to our Shrader Game Night', (SELECT id FROM users WHERE username = ‘katiesautter’), (SELECT id FROM events WHERE title = ‘Game Night’)); 
+
+
+INSERT INTO posts VALUES ('Come to Lax Night', (SELECT id FROM users WHERE username = ‘beccathorne’), (SELECT id FROM events WHERE title = ‘LAX Night’));
+
+INSERT INTO events VALUES ('Game Night', 'public', current_timestamp, (SELECT id FROM locations WHERE name = ‘shrader’)); 
+
+INSERT INTO events VALUES ('Lax Night', 'public', current_timestamp, (SELECT id FROM locations WHERE name = ‘Wolly Lawn’));
+
+INSERT INTO locations VALUES ('Shrader');
+
+INSERT INTO locations VALUES ('Wolly lawn');
+
+
+
+
+
+INSERT INTO posts (message, fk_user_id, fk_events_id) VALUES ('Come to our Shrader Game Night', (select id from users where username = 'katiesautter'), (SELECT id FROM events WHERE title = 'Game Night'));
+
+
+INSERT INTO events (title, status, date_time, fk_location_id) VALUES ('Game Night', 'public', current_timestamp, (SELECT id FROM locations WHERE name = 'Shrader'); 
+
+INSERT INTO locations (name) VALUES ('Shrader')
+

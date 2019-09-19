@@ -1,33 +1,33 @@
 CREATE TABLE users (
-    id int, 
-    username varchar(50), 
+    id SERIAL PRIMARY KEY,
+    username varchar(50) NOT NULL UNIQUE, 
     password varchar(50)
 );  
 
-CREATE TABLE posts (
-    id int, 
-    message varchar(1000), 
-    fk_user_id int, 
-    fk_events_id int
+CREATE TABLE locations (
+    id SERIAL PRIMARY KEY,
+    name varchar(100) NOT NULL UNIQUE
 );
 
 CREATE TABLE events (
-    id int, 
-    title varchar(150), 
+    id SERIAL PRIMARY KEY,
+    title varchar(150) NOT NULL, 
     status varchar(15), 
-    date_time TIMESTAMP, 
-    fk_location_id int
+    date_time TIMESTAMP NOT NULL, 
+    fk_location_id int REFERENCES locations(id) NOT NULL
 );
 
-CREATE TABLE locations (
-    id int, 
-    name varchar(100)
+CREATE TABLE posts (
+    id SERIAL PRIMARY KEY, 
+    message varchar(1000) NOT NULL, 
+    fk_user_id int REFERENCES users(id) NOT NULL,
+    fk_events_id int REFERENCES events(id) NOT NULL
 );
 
 CREATE TABLE private_events_users (
-    id int,    
-    fk_user_id int, 
-    fk_events_id int
+    id SERIAL PRIMARY KEY,  
+    fk_user_id int REFERENCES users(id) NOT NULL,
+    fk_events_id int REFERENCES events(id) NOT NULL
 );
 
 --Multiline format is better because it makes the command more concise and easier 
