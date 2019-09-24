@@ -40,6 +40,7 @@ public class AppTest
         assertTrue( true );
     }
     
+    
     public void testUsers()
     {
     	  SessionFactory sf = HibernateUtil.getSessionFactory();
@@ -47,27 +48,27 @@ public class AppTest
           session.beginTransaction();
           
           User adduser = new User();
-          adduser.setUsername("suzanne123");
+          adduser.setUsername("sue12345");
           adduser.setPassword("sueypigeon");
-          
           session.save(adduser);
-          
           session.getTransaction().commit();
-          assertEquals("suzanne123", adduser.getUsername());
           
-          session.beginTransaction();
-          Query query = session.createQuery("SELECT username FROM users WHERE username=?1");
-          query.setParameter(1, "suzanne123");
-          User user = session.get(User.class, "suzanne123");
+          //assertEquals("sue1234", adduser.getUsername());
+          
+         /* session.beginTransaction();
+          Query query = session.createQuery("SELECT username FROM users WHERE username=?3");
+          query.setParameter(3, "sue1234");session.getTransaction().commit();
+          assertEquals("sue1234", adduser.getUsername());
+          User user = session.get(User.class, 3);
           assertTrue(user != null);
-          assertEquals( user.getUsername(), "suzanne123");
+          assertEquals( user.getUsername(), "sue1234");
           session.delete(adduser);
           session.getTransaction().commit();
-        //  HibernateUtil.shutdown();
+        //  HibernateUtil.shutdown(); */
           
-        /** User user = session.get(User.class, 1);
-          assertTrue(user != null);
-          assertEquals( user.getId(), 1);
-          assertEquals( user.getUsername(), "katiesautter"); **/
+          User user1 = session.get(User.class, 1);
+          assertTrue(user1 != null);
+          assertEquals( user1.getId(), 1);
+          assertEquals( user1.getUsername(), "beccathorne"); 
     }
 }
