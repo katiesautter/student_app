@@ -1,10 +1,12 @@
-package org.ksautter.sea;
+package org.ksautter.sea.model;
 
 
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
+import org.ksautter.sea.model.HibernateUtil;
+import org.ksautter.sea.model.User;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

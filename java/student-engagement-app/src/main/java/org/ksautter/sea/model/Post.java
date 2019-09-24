@@ -1,4 +1,4 @@
-package org.ksautter.sea;
+package org.ksautter.sea.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

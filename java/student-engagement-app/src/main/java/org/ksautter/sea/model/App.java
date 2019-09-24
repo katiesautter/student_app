@@ -1,4 +1,4 @@
-package org.ksautter.sea;
+package org.ksautter.sea.model;
 
 /**
  * Hello world!

@@ -23,12 +23,13 @@ CREATE TABLE posts (
     fk_user_id int REFERENCES users(id) NOT NULL,
     fk_events_id int REFERENCES events(id) NOT NULL
 );
-
+--so you know the users in a private event
 CREATE TABLE private_events_users (
     id SERIAL PRIMARY KEY,  
     fk_user_id int REFERENCES users(id) NOT NULL,
     fk_events_id int REFERENCES events(id) NOT NULL
 );
+
 
 --Multiline format is better because it makes the command more concise and easier 
 --to read/understand what the command is doing. also makes it easier to fix and
