@@ -2,9 +2,12 @@ package org.ksautter.sea.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
+@Entity(name = "posts")
 @Table(name = "posts")
 public class Post 
 {
@@ -21,7 +24,9 @@ public Post(String msg, int fkuser, int fkevents) {
    this.fk_events = fkevents;
 }	
 
+@Id
 @Column
+@GeneratedValue(strategy=GenerationType.IDENTITY)
 public int getId() {
    return id;
 }

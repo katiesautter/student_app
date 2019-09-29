@@ -2,11 +2,14 @@ package org.ksautter.sea.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
 
-@Entity
-@Table(name = "posts")
+@Entity(name = "events")
+@Table(name = "events")
 public class Event 
 {
 	private int id;
@@ -23,8 +26,9 @@ public Event(String title, String stat, Date date , int fkloc) {
    this.date_time = date;
    this.fk_loc_id = fkloc;
 	}	
-
+@Id
 @Column
+@GeneratedValue(strategy=GenerationType.IDENTITY)
 public int getId() {
 	   return id;
 	}
