@@ -4,11 +4,16 @@ package org.ksautter.sea.model;
 
 import java.util.Date;
 
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.ksautter.sea.model.HibernateUtil;
 import org.ksautter.sea.model.User;
+import org.ksautter.sea.model.Event;
+import org.ksautter.sea.model.Location;
+import org.ksautter.sea.model.PrivateEventUser;
+import org.ksautter.sea.model.Post;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;

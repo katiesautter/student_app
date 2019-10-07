@@ -45,7 +45,7 @@ extends TestCase
         Session session = sf.openSession();
         session.beginTransaction();
         
-        Events getEvent = new Events();
+        ServerEvents getEvent = new ServerEvents();
         List<Event> list = getEvent.publicEvents();
         assertTrue(list.size() > 4);
         
