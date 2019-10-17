@@ -134,7 +134,7 @@ public class AppTest
         session.beginTransaction();
         
         ServerPosts getPos = new ServerPosts();
-        List<Post> list = getPos.getPosts();
+        List<Post> list = getPos.getPosts1();
         assertTrue(list.size() > 1); 
     	/*SessionFactory sf = HibernateUtil.getSessionFactory();
         Session session = sf.openSession();

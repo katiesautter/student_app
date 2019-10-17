@@ -13,7 +13,7 @@ import org.ksautter.sea.model.Event;
 
 
 public class ServerPosts {
-	public List<Post> getPosts()
+	public List<Post> getPosts1()
 	{
 		SessionFactory sf = HibernateUtil.getSessionFactory();
         Session session = sf.openSession();

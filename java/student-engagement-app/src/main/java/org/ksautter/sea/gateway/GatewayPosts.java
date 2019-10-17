@@ -14,6 +14,6 @@ public class GatewayPosts {
 	  public String getPublicPosts() 
 	  {
 		ServerPosts request = new ServerPosts();
-		return request.getPosts().toString();
+		return request.getPosts1().toString();
 	  }
 }

@@ -99,7 +99,7 @@ extends TestCase
         session.beginTransaction();
         
         ServerPosts getPos = new ServerPosts();
-        List<Post> list = getPos.getPosts();
+        List<Post> list = getPos.getPosts1();
         assertTrue(list.size() > 1);
         
     	
