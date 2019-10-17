@@ -44,6 +44,8 @@ INSERT INTO posts (message, fk_user_id, fk_events_id) VALUES ('Come sing your he
 
 INSERT INTO posts (message, fk_user_id, fk_events_id) VALUES ('Come support the girls volleyball team!!', (SELECT id FROM users WHERE username = 'codycook'), (SELECT id FROM events WHERE title = 'Volleyball Game'));
 
+INSERT INTO posts (message, fk_user_id, fk_events_id) VALUES ('Volleyball game tonight!!', (SELECT id FROM users WHERE username = 'codycook'), (SELECT id FROM events WHERE title = 'Volleyball Game'));
+
 INSERT INTO private_events_users (fk_user_id, fk_events_id) VALUES ((SELECT id FROM users WHERE username = 'codycook'), (SELECT id FROM events WHERE title = 'Comp Sci Study Group'));
 
 INSERT INTO private_events_users (fk_user_id, fk_events_id) VALUES ((SELECT id FROM users WHERE username = 'katies130'), (SELECT id FROM events WHERE title = 'Basement Shrader Club'));

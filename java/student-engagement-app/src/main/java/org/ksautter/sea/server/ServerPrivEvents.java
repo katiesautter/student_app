@@ -13,7 +13,7 @@ public class ServerPrivEvents {
 		SessionFactory sf = HibernateUtil.getSessionFactory();
         Session session = sf.openSession();
 		session.beginTransaction();
-		List<PrivateEventUser> eventList = session.createQuery("SELECT fk_events_id FROM private_events_users").list();
+		List<PrivateEventUser> eventList = session.createQuery("SELECT id FROM private_events_users").list();
 		return eventList;
 	}
 }

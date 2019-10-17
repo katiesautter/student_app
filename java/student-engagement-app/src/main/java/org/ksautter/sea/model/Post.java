@@ -1,14 +1,20 @@
 package org.ksautter.sea.model;
 
+import java.util.List;
+
+import javax.persistence.Access;
+import javax.persistence.AccessType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity(name = "posts")
 @Table(name = "posts")
+
 public class Post 
 {
 	private int id;
@@ -16,7 +22,12 @@ public class Post
 	private int fk_user; 
 	private int fk_events; 
 	
-
+	@Access(AccessType.PROPERTY)
+	@ManyToOne
+	//@JoinColumn(name ="id")
+	//@ElementCollection(targetClass=Event.class)
+	private List<Event> events;
+	
 public Post() {}
 public Post(String msg, int fkuser, int fkevents) {
    this.message = msg;
@@ -61,6 +72,9 @@ public int getFkevents() {
 public void setFkevents( int fkevents ) {
    this.fk_events = fkevents;
 }
+
+
+
 }
 
 

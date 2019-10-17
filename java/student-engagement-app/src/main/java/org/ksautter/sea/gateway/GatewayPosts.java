@@ -7,6 +7,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
+@Path("/ServerPosts")
 public class GatewayPosts {
 	@GET
 	@Produces(MediaType.TEXT_PLAIN)

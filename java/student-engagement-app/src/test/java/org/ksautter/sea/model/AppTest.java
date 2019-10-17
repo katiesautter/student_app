@@ -3,13 +3,13 @@ package org.ksautter.sea.model;
 
 
 import java.util.Date;
-
-
+import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.ksautter.sea.model.HibernateUtil;
 import org.ksautter.sea.model.User;
+import org.ksautter.sea.server.ServerPosts;
 import org.ksautter.sea.model.Event;
 import org.ksautter.sea.model.Location;
 import org.ksautter.sea.model.PrivateEventUser;
@@ -53,9 +53,9 @@ public class AppTest
     
     public void testUsers()
     {
-    	  SessionFactory sf = HibernateUtil.getSessionFactory();
+    	/*  SessionFactory sf = HibernateUtil.getSessionFactory();
           Session session = sf.openSession();
-          session.beginTransaction();
+          session.beginTransaction(); */
           
           /*User adduser = new User();
           adduser.setUsername("sue12345");
@@ -76,15 +76,15 @@ public class AppTest
           session.getTransaction().commit();
         //  HibernateUtil.shutdown(); */
           
-          User user1 = session.get(User.class, 1);
+        /*  User user1 = session.get(User.class, 1);
           assertTrue(user1 != null);
           assertEquals( user1.getId(), 1);
-          assertEquals( user1.getUsername(), "beccathorne"); 
+          assertEquals( user1.getUsername(), "beccathorne"); */
     }
     
     public void testLocations()
     {
-    	SessionFactory sf = HibernateUtil.getSessionFactory();
+    	/*SessionFactory sf = HibernateUtil.getSessionFactory();
         Session session = sf.openSession();
         session.beginTransaction();
         
@@ -99,12 +99,12 @@ public class AppTest
       
         
        // session.delete(locations);
-        session.getTransaction().commit();
+        session.getTransaction().commit(); */
     }
     
     public void testPosts()
     {
-    	SessionFactory sf = HibernateUtil.getSessionFactory();
+    /*	SessionFactory sf = HibernateUtil.getSessionFactory();
         Session session = sf.openSession();
         session.beginTransaction();
         
@@ -119,7 +119,7 @@ public class AppTest
         Post post1 = session.get(Post.class, 1);
         assertTrue(post1 != null);
         assertEquals(post1.getId(), 1);
-        assertEquals(post1.getMsg(), "Come study for comp sci exam 3"); 
+        assertEquals(post1.getMsg(), "Come study for comp sci exam 3"); */
       
         
       //  session.delete(posts);
@@ -129,6 +129,13 @@ public class AppTest
     
     public void testEvents()
     {
+    	SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.openSession();
+        session.beginTransaction();
+        
+        ServerPosts getPos = new ServerPosts();
+        List<Post> list = getPos.getPosts();
+        assertTrue(list.size() > 1); 
     	/*SessionFactory sf = HibernateUtil.getSessionFactory();
         Session session = sf.openSession();
         session.beginTransaction();
@@ -153,7 +160,7 @@ public class AppTest
     
     public void testPrivateUsers()
     {
-    	SessionFactory sf = HibernateUtil.getSessionFactory();
+    /*	SessionFactory sf = HibernateUtil.getSessionFactory();
         Session session = sf.openSession();
         session.beginTransaction();
         
@@ -166,7 +173,7 @@ public class AppTest
         session.beginTransaction();
         PrivateEventUser privuser2 = session.get(PrivateEventUser.class, 1);
         assertTrue(privuser2 != null);
-       assertEquals(privuser2.getFkevent(), 5); 
+        assertEquals(privuser2.getFkevent(), 5); */
       
  
        // session.delete(privuser);

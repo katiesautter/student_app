@@ -14,6 +14,6 @@ public class GatewayUsers {
 	  public String getPublicEvents() 
 	  {
 		ServerUsers request = new ServerUsers();
-		return request.getUsers().toString();
+		return request.getUser().toString();
 	  }
 }

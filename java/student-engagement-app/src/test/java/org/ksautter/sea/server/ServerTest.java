@@ -7,6 +7,9 @@ import org.hibernate.query.Query;
 import org.ksautter.sea.model.Event;
 import org.ksautter.sea.model.HibernateUtil;
 import org.ksautter.sea.model.User;
+import org.ksautter.sea.model.PrivateEventUser;
+import org.ksautter.sea.model.Location;
+import org.ksautter.sea.model.Post;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -51,4 +54,54 @@ extends TestCase
         
     }
     
+  /*  public void testPrivUsers() 
+    {
+    	SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.openSession();
+        session.beginTransaction();
+        
+        ServerPrivEvents getEvents = new ServerPrivEvents();
+        List<PrivateEventUser> list = getEvents.privateEvents();
+        assertTrue(list.size() > 2);
+        
+    	
+    } */
+    
+    public void testUsers() 
+    {
+    	SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.openSession();
+        session.beginTransaction();
+        
+        ServerUsers getUsers = new ServerUsers();
+        List<User> list = getUsers.getUser();
+        assertFalse(list.size() > 1);
+    	
+    }
+    
+    public void testLocations() 
+    {
+    	SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.openSession();
+        session.beginTransaction();
+        
+        ServerLocations getLoc = new ServerLocations();
+        List<Location> list = getLoc.getLocations();
+        assertTrue(list.size() > 2);
+        
+    	
+    }
+    
+    public void testPosts() 
+    {
+    	SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.openSession();
+        session.beginTransaction();
+        
+        ServerPosts getPos = new ServerPosts();
+        List<Post> list = getPos.getPosts();
+        assertTrue(list.size() > 1);
+        
+    	
+    }
 }
