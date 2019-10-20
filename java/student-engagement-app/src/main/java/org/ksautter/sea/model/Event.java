@@ -25,16 +25,16 @@ public class Event
 	private Date date_time; 
 	private int fk_loc_id;
 	
-	@Access(AccessType.PROPERTY)
-	@OneToMany
-	@JoinColumn(name ="fk_events_id")
-	@ElementCollection(targetClass=Post.class)
+	
 	private List<Post> posts;
 	
+	@OneToMany
+	@JoinColumn(name ="fk_events_id")
 	public List<Post> getPosts()
 	{
 		return posts; 
 	}
+	
 	public void setPosts(List<Post> posts) {
 	    this.posts = posts;
 	}	

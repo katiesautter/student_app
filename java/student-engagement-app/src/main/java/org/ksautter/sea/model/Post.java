@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -22,11 +23,9 @@ public class Post
 	private int fk_user; 
 	private int fk_events; 
 	
-	@Access(AccessType.PROPERTY)
 	@ManyToOne
-	//@JoinColumn(name ="id")
-	//@ElementCollection(targetClass=Event.class)
-	private List<Event> events;
+	@JoinColumn(name ="fk_events_id")
+	private Event event;
 	
 public Post() {}
 public Post(String msg, int fkuser, int fkevents) {

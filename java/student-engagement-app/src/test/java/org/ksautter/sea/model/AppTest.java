@@ -133,8 +133,9 @@ public class AppTest
         Session session = sf.openSession();
         session.beginTransaction();
         
-        ServerPosts getPos = new ServerPosts();
-        List<Post> list = getPos.getPosts();
+        Event event = session.get(Event.class, 4);
+        assertTrue(event != null);
+        List<Post> list = event.getPosts();
         assertTrue(list.size() > 1); 
     	/*SessionFactory sf = HibernateUtil.getSessionFactory();
         Session session = sf.openSession();
