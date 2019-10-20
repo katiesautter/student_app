@@ -19,14 +19,25 @@ import javax.persistence.Table;
 @Table(name = "events")
 public class Event 
 {
-	@Id
 	private int id;
-	
 	private String title; 
 	private String status; 
 	private Date date_time; 
 	private int fk_loc_id;
-
+	
+	@Access(AccessType.PROPERTY)
+	@OneToMany
+	@JoinColumn(name ="fk_events_id")
+	@ElementCollection(targetClass=Post.class)
+	private List<Post> posts;
+	
+	public List<Post> getPosts()
+	{
+		return posts; 
+	}
+	public void setPosts(List<Post> posts) {
+	    this.posts = posts;
+	}	
 
 public Event() {}
 public Event(String title, String stat, Date date , int fkloc) {
@@ -36,21 +47,7 @@ public Event(String title, String stat, Date date , int fkloc) {
    this.fk_loc_id = fkloc;
 	}	
 
-@Access(AccessType.PROPERTY)
-@OneToMany
-@JoinColumn(name ="fk_events_id")
-@ElementCollection(targetClass=Post.class)
-private List<Post> posts;
-
-public List<Post> getPosts()
-{
-	return posts; 
-}
-public void setPosts(List<Post> posts) {
-    this.posts = posts;
-}	
-
-
+@Id
 @Column
 @GeneratedValue(strategy=GenerationType.IDENTITY)
 public int getId() {
@@ -96,5 +93,7 @@ public int getId() {
 	public void setFkloc (int fkloc ) {
 	   this.fk_loc_id = fkloc;
 	}
+	
+	
 	
 	}

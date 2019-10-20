@@ -17,12 +17,16 @@ import javax.persistence.Table;
 
 public class Post 
 {
-	@Id
 	private int id;
-	
 	private String message; 
 	private int fk_user; 
 	private int fk_events; 
+	
+	@Access(AccessType.PROPERTY)
+	@ManyToOne
+	//@JoinColumn(name ="id")
+	//@ElementCollection(targetClass=Event.class)
+	private List<Event> events;
 	
 public Post() {}
 public Post(String msg, int fkuser, int fkevents) {
@@ -31,20 +35,7 @@ public Post(String msg, int fkuser, int fkevents) {
    this.fk_events = fkevents;
 }	
 
-@Access(AccessType.PROPERTY)
-@ManyToOne
-//@JoinColumn(name ="id")
-//@ElementCollection(targetClass=Event.class)
-private Event events;
-
-public Event getEvents()
-{
-	return events; 
-}
-public void setEvents(Event events) {
-    this.events = events;
-}	
-
+@Id
 @Column
 @GeneratedValue(strategy=GenerationType.IDENTITY)
 public int getId() {
