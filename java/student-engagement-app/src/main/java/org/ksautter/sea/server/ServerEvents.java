@@ -1,12 +1,11 @@
 package org.ksautter.sea.server;
 
 import java.util.List;
-
-
 import org.hibernate.query.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.ksautter.sea.model.Event;
+import org.ksautter.sea.model.Post;
 import org.ksautter.sea.model.HibernateUtil;
 
 public class ServerEvents {
@@ -17,6 +16,18 @@ public class ServerEvents {
 		session.beginTransaction();
 		List<Event> eventList = session.createQuery("SELECT title FROM events where status = 'public'").list();
 		return eventList;
+		
+	}
+	
+	public List<Post> eventPosts(int id)
+	{
+		//int number = Integer.parseInt(id);
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.openSession();		
+		session.beginTransaction();
+		Event event = session.get(Event.class, id);
+		List<Post> postList = event.getPosts();
+		return postList;
 		
 	}
 	

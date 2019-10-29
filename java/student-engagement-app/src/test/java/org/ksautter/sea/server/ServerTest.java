@@ -44,9 +44,6 @@ extends TestCase
     
     public void testEvents()
     {
-    	SessionFactory sf = HibernateUtil.getSessionFactory();
-        Session session = sf.openSession();
-        session.beginTransaction();
         
         ServerEvents getEvent = new ServerEvents();
         List<Event> list = getEvent.publicEvents();
