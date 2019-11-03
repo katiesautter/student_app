@@ -10,14 +10,14 @@ import org.ksautter.sea.model.HibernateUtil;
 
 public class ServerEvents {
 	
-	//@SuppressWarnings("unchecked")
+	
 	public List<Event> publicEvents()
 	{
 		
 		SessionFactory sf = HibernateUtil.getSessionFactory();
         Session session = sf.openSession();
 		session.beginTransaction();
-		List<Event> eventList= session.createQuery("SELECT events FROM events where status = 'public'", Event.class).list();
+		List<Event> eventList= session.createQuery("SELECT e FROM events e where status = 'public'", Event.class).list();
 		return eventList;
 		
 	}

@@ -121,7 +121,7 @@ public int getId() {
 		builder.append(title);
 		builder.append("}");
 		
-	/*	builder.append("\"title\":");
+		builder.append("\"title\":");
 		builder.append("\"");
 		builder.append(title);
 		builder.append("\"");
@@ -139,7 +139,7 @@ public int getId() {
 		
 		builder.append("\"fk_location\":");
 		builder.append(fk_loc_id);
-		builder.append("}"); */
+		builder.append("}"); 
 		
 		return builder.toString();
 	}
