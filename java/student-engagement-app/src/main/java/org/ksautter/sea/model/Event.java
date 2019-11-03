@@ -94,6 +94,54 @@ public int getId() {
 	   this.fk_loc_id = fkloc;
 	}
 	
+	public String toString()
+	{
+		return "Title:" + title;
+		
 	
+	}
+	/*
+	private List<Event> events;
+	public List<Event> getEvents()
+	{
+		return events; 
+	}
+	
+	public void setEvents(List<Event> events) {
+	    this.events = events;
+	}	*/
+
+	
+	public String toJSON()
+	{
+		StringBuilder builder = new StringBuilder();
+		
+		builder.append("{");
+		builder.append("\"title\":");
+		builder.append(title);
+		builder.append("}");
+		
+	/*	builder.append("\"title\":");
+		builder.append("\"");
+		builder.append(title);
+		builder.append("\"");
+		builder.append(",");
+	
+		builder.append("\"status\":");
+		builder.append("\"");
+		builder.append(status);
+		builder.append("\"");
+		builder.append(",");
+		
+		builder.append("\"datetime\":");
+		builder.append(date_time);
+		builder.append(",");
+		
+		builder.append("\"fk_location\":");
+		builder.append(fk_loc_id);
+		builder.append("}"); */
+		
+		return builder.toString();
+	}
 	
 	}

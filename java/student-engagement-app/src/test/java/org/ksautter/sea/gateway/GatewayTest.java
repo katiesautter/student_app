@@ -33,13 +33,11 @@ extends TestCase {
 	
 	public void testEvents()
 	{
-		
-        
         GatewayEvents getPublic = new GatewayEvents();
-        String var = getPublic.getPublicEvents();
-        System.out.println(var);
+        String eventsJson = getPublic.getPublicEvents();
+        System.out.println(eventsJson);
         
-        String id = "3";
+        String id = "4";
         GatewayEvents gatewayEvents = new GatewayEvents();
         String eventPostsJson =  gatewayEvents.getEventPosts(id);
         System.out.println(eventPostsJson);

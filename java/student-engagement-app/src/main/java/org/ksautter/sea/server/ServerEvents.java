@@ -9,12 +9,15 @@ import org.ksautter.sea.model.Post;
 import org.ksautter.sea.model.HibernateUtil;
 
 public class ServerEvents {
+	
+	//@SuppressWarnings("unchecked")
 	public List<Event> publicEvents()
 	{
+		
 		SessionFactory sf = HibernateUtil.getSessionFactory();
         Session session = sf.openSession();
 		session.beginTransaction();
-		List<Event> eventList = session.createQuery("SELECT title FROM events where status = 'public'").list();
+		List<Event> eventList= session.createQuery("SELECT events FROM events where status = 'public'", Event.class).list();
 		return eventList;
 		
 	}
@@ -26,7 +29,7 @@ public class ServerEvents {
         Session session = sf.openSession();		
 		session.beginTransaction();
 		Event event = session.get(Event.class, id);
-		List<Post> postList = event.getPosts();
+		List<Post> postList = event.getPosts();		
 		return postList;
 		
 	}

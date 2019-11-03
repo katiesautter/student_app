@@ -26,6 +26,16 @@ public class Post
 	@ManyToOne
 	@JoinColumn(name ="fk_events_id")
 	private Event event;
+	/*public Event getEvents()
+	{
+		return event; 
+	}
+	
+	public void setEvents(Event event) {
+	    this.event = event;
+	}	*/
+
+	
 
 	public Post() {}
 	public Post(String msg, int fkuser, int fkevents) {
@@ -82,32 +92,24 @@ public class Post
 	{
 		StringBuilder builder = new StringBuilder();
 		
-		//builder.append("{");
-		//builder.append("\"Posts\":");
-		//builder.append("[");
 		builder.append("{");
 		builder.append("\"id\":");
 		builder.append(id);
-		builder.append("}");
-		//builder.append("]");
-		//builder.append("}");
-		//builder.append(",");
-		/*
 		builder.append(",");
-		builder.append("{");
+		
 		builder.append("\"message\":");
+		builder.append("\"");
 		builder.append(message);
-		builder.append("}");
+		builder.append("\"");
 		builder.append(",");
-		builder.append("{");
+	
 		builder.append("\"user_id\":");
 		builder.append(fk_user);
-		builder.append("}");
 		builder.append(",");
-		builder.append("{");
+		
 		builder.append("\"event_id\":");
 		builder.append(fk_events);
-		builder.append("}"); */
+		builder.append("}"); 
 		
 		return builder.toString();
 	}
