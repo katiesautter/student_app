@@ -117,9 +117,10 @@ public int getId() {
 		StringBuilder builder = new StringBuilder();
 		
 		builder.append("{");
-		builder.append("\"title\":");
-		builder.append(title);
-		builder.append("}");
+		builder.append("\"id\":");
+		builder.append(id);
+		builder.append(",");
+		
 		
 		builder.append("\"title\":");
 		builder.append("\"");
@@ -134,7 +135,9 @@ public int getId() {
 		builder.append(",");
 		
 		builder.append("\"datetime\":");
+		builder.append("\"");
 		builder.append(date_time);
+		builder.append("\"");
 		builder.append(",");
 		
 		builder.append("\"fk_location\":");
