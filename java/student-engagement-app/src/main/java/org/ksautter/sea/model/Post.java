@@ -13,6 +13,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
 @Entity(name = "posts")
 @Table(name = "posts")
 
@@ -113,7 +116,15 @@ public class Post
 		
 		return builder.toString();
 	}
+	public void save() {
 
+		// Event event = this;
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
+		session.beginTransaction();
+		session.save(this);
+		session.getTransaction().commit();
+	}
 }
 
 

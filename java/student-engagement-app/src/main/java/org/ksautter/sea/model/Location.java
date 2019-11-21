@@ -40,4 +40,21 @@ public void setName( String name ) {
    this.name = name;
 }
 
+public String toJSON() {
+	StringBuilder builder = new StringBuilder();
+
+	builder.append("{");
+	builder.append("\"id\":");
+	builder.append(id);
+	builder.append(",");
+
+	builder.append("\"name\":");
+	builder.append("\"");
+	builder.append(name);
+	builder.append("\"");
+	builder.append("}");
+
+	return builder.toString();
+}
+
 }

@@ -15,7 +15,7 @@ public class ServerLocations {
 		SessionFactory sf = HibernateUtil.getSessionFactory();
         Session session = sf.openSession();
 		session.beginTransaction();
-		List<Location> eventList = session.createQuery("SELECT name FROM locations").list();
+		List<Location> eventList = session.createQuery("SELECT l FROM locations l").list();
 		return eventList;
 		
 	}

@@ -1,8 +1,12 @@
 package org.ksautter.sea.gateway;
 
-import java.net.URI;
-import java.net.URISyntaxException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -13,6 +17,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.ksautter.sea.model.Event;
 import org.ksautter.sea.model.Post;
 import org.ksautter.sea.server.ServerEvents;
@@ -74,12 +80,41 @@ public class GatewayEvents {
 	  }
 	
     @POST
-	@Consumes(MediaType.TEXT_PLAIN)
-	public Response createEvent(String incomingData)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response createEvent(String incomingData) throws JSONException, ParseException
 	{
-		System.out.println("Event Information: " +incomingData.toString());
+    	String json = incomingData;
+        JSONObject obj = new JSONObject(json);
+        
+        String title = obj.getString("title");
+        System.out.println(title);
+        String status = obj.getString("status");
+        System.out.println(status);
+        String date_time = obj.getString("date_time");
+        System.out.println(date_time);
+        String location_id  = obj.getString("location_id");
+        System.out.println(location_id);
+        
+        SimpleDateFormat timestamp = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        Date date = timestamp.parse(date_time);
+        
+        int i = Integer.parseInt(location_id);
+        
+        
+        Event newEvent = new Event();
+        newEvent.setTitle(title);
+        newEvent.setStatus(status);
+        newEvent.setDate(date);
+        newEvent.setFkloc(i);
+        newEvent.save();
+       
+        StringBuilder builder = new StringBuilder();
+        builder.append(newEvent.toJSON());
+        System.out.println(newEvent.toJSON());
+        
+		//System.out.println("Event Information: " +incomingData.toString());
 		return Response.status(200)
-				.entity(incomingData.toString())
+				.entity(newEvent.toJSON())
 				.build();	
 		
 		
