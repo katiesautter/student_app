@@ -45,7 +45,7 @@ public class GatewayTest extends TestCase {
 		JSONObject obj = new JSONObject(eventsJson);
 		JSONArray arr = obj.getJSONArray("PublicEvents");
 		for (int i = 0; i < arr.length(); i++) {
-			String ids = arr.getJSONObject(i).getString("id");
+			String ids = arr.getJSONObject(i).getString("id"); //assertEquals getJSonObject(1) equals 1
 			System.out.println(ids);
 			System.out.println("JSON for public events is working successfully");
 		}
@@ -148,4 +148,40 @@ public class GatewayTest extends TestCase {
 		System.out.println("JSON events is working successfully");
 		
 	}*/
+	
+	public void testUsers() throws JSONException, ParseException
+	{
+		//gets users from database
+				GatewayUsers users = new GatewayUsers();
+				String usersJson = users.getUsers();
+				System.out.println(usersJson);
+				assertTrue(usersJson != null);
+				assertTrue(usersJson.length() > 5);
+				assertTrue(usersJson.contains("becca"));
+				
+				//testing JSON for all users
+				JSONObject obj = new JSONObject(usersJson);
+				JSONArray arr = obj.getJSONArray("Users");
+				for (int i = 0; i < arr.length(); i++) {
+					String ids = arr.getJSONObject(i).getString("id");
+					System.out.println(ids);
+					System.out.println("JSON for all users is working successfully");
+				}
+		
+				//creating a user and adding to the database 
+				String userJson = "{\"username\":\"joamy6\",\"password\":\"matas123\"}\n"
+						+ "";
+				GatewayUsers user2 = new GatewayUsers();
+				Response response = user2.createUser(userJson);
+				System.out.println("RESPONSE: " + response);
+				assertTrue(response != null);
+				String user = response.getEntity().toString();
+				//assertTrue(user.contains("bball"));
+				
+				//testing JSON for created user
+				JSONObject obj2 = new JSONObject(user);
+				String username = obj2.getString("username");
+				System.out.println(username);
+				System.out.println("JSON for new added user is working successfully");
+	}
 }

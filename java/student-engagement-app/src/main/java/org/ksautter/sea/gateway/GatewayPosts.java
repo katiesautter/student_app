@@ -27,7 +27,8 @@ public class GatewayPosts {
 	  {
 		ServerPosts request = new ServerPosts();
 		return request.getPosts().toString();
-	  } @POST
+	  } 
+		@POST
 		@Consumes(MediaType.APPLICATION_JSON)
 		public Response createPost(String incomingData) throws JSONException, ParseException
 		{

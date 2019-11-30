@@ -13,7 +13,7 @@ public class ServerUsers {
 		SessionFactory sf = HibernateUtil.getSessionFactory();
         Session session = sf.openSession();
 		session.beginTransaction();
-		List<User> userList = session.createQuery("SELECT username FROM users WHERE username = 'beccathorne'").list();
+		List<User> userList = session.createQuery("SELECT u FROM users u").list();
 		return userList;
 	}
 	

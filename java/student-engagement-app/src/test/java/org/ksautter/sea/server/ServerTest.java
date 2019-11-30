@@ -71,7 +71,7 @@ extends TestCase
         
         ServerUsers getUsers = new ServerUsers();
         List<User> list = getUsers.getUser();
-        assertFalse(list.size() > 1);
+        assertTrue(list.size() > 1);
     	
     }
     
