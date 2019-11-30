@@ -11,9 +11,9 @@
  
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-        <property name="hibernate.connection.url">jdbc:postgresql://127.0.0.1:5432/sea</property>
-        <property name="hibernate.connection.username">ksautter</property>
-        <property name="hibernate.connection.password">4boodles</property>
+        <property name="hibernate.connection.url">${JDBC_CONNECTION_STRING}</property>
+        <property name="hibernate.connection.username">${JDBC_USERNAME}</property>
+        <property name="hibernate.connection.password">${JDBC_PASSWORD}</property>
  
         <!-- add classes to map from here -->
         <mapping class="org.ksautter.sea.model.User" />
