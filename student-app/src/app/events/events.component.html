@@ -1,12 +1,17 @@
-<p>events works!</p>
-
-<h1 style = "color:green">WELCOME!</h1> 
-<h2>Please login for full capabilities</h2> 
 <h3>All Public Events:</h3> 
 
 <ul>
     <li *ngFor="let event of events">
-        {{ event }}
+        <!--
+     {{ event }} 
+        <span>{{event.title}}</span>  
+         <a routerLink="/eventdetails/:event.id" routerLinkActive="active">{{event.id}} <var>id = {{event.id}}</var> -->
+        <nav> 
+            <a routerLink="/eventsdetails/:{{event.id}}" routerLinkActive="active">{{event.id}}</a>  
+        </nav>
+        <h3></h3>
+        <router-outlet></router-outlet> 
     </li>
-</ul>
+</ul> 
+
 

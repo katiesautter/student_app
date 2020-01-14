@@ -6,10 +6,16 @@ import { EventsComponent } from './events/events.component';
 
 const routes: Routes = [
   {
-    path: 'eventsdetail',
+    path: 'eventsdetails/:id',
     component: EventDetailsComponent,
     data: { title: 'events' }
-  },
+  }, 
+
+  /**{
+    path: '{{event.title}}',
+    component: EventDetailsComponent,
+    data: { title: '{{event.title}}' }
+  }, */
 
   {
     path: 'events',

@@ -8,7 +8,7 @@ import { NgLocalization } from '@angular/common';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-//  events=['Volleyball Game', 'Game Night','Study Session','Living Issues Study Group','Chess Tournament', 'Floor Meetings']; 
+
 }
 
 
