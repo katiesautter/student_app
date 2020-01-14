@@ -2,12 +2,8 @@
 
 <ul>
     <li *ngFor="let event of events">
-        <!--
-     {{ event }} 
-        <span>{{event.title}}</span>  
-         <a routerLink="/eventdetails/:event.id" routerLinkActive="active">{{event.id}} <var>id = {{event.id}}</var> -->
         <nav> 
-            <a routerLink="/eventsdetails/:{{event.id}}" routerLinkActive="active">{{event.id}}</a>  
+            <a   [routerLink]="['/eventsdetails', event.id]" routerLinkActive="active">{{event.id}}</a>  
         </nav>
         <h3></h3>
         <router-outlet></router-outlet> 

@@ -11,12 +11,6 @@ const routes: Routes = [
     data: { title: 'events' }
   }, 
 
-  /**{
-    path: '{{event.title}}',
-    component: EventDetailsComponent,
-    data: { title: '{{event.title}}' }
-  }, */
-
   {
     path: 'events',
     component: EventsComponent,
