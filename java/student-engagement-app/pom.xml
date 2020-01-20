@@ -24,7 +24,18 @@
                     <JDBC_PASSWORD>4boodles</JDBC_PASSWORD>
                 </systemPropertyVariables>
             </configuration>
-        </plugin>
+    </plugin>
+    <plugin>
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-war-plugin</artifactId>
+  <configuration>
+    <webResources>
+      <resource>
+        <directory>../../student-app/dist/student-app</directory>
+      </resource>
+    </webResources>
+  </configuration>
+</plugin>
     </plugins>
 </build>
   <dependencies>
