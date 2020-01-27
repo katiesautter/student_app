@@ -16,6 +16,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.ResponseBuilder;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,7 +28,7 @@ import org.ksautter.sea.server.ServerEvents;
 public class GatewayEvents {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	  public String getPublicEvents() 
+	  public Response getPublicEvents() 
 	  {
 		ServerEvents request = new ServerEvents();
 		List<Event> list1 = request.publicEvents();
@@ -47,13 +48,17 @@ public class GatewayEvents {
 		}
 		builder.append("]");
 		builder.append("}");
-		return builder.toString();
+		
+		return Response.ok()
+	               .entity(builder.toString())
+	               .header("Access-Control-Allow-Origin", "*")
+	               .build();
 	  }
 
 	@Path("{id}")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	  public String getEventPosts(@PathParam("id") String id) 
+	  public Response getEventPosts(@PathParam("id") String id) 
 	  {
 		int number = Integer.parseInt(id);
 		ServerEvents request = new ServerEvents();
@@ -75,7 +80,11 @@ public class GatewayEvents {
 		}
 		builder.append("]");
 		builder.append("}");
-		return builder.toString();
+		
+		return Response.ok()
+	               .entity(builder.toString())
+	               .header("Access-Control-Allow-Origin", "*")
+	               .build();
 		
 	  }
 	
@@ -113,9 +122,13 @@ public class GatewayEvents {
         System.out.println(newEvent.toJSON());
         
 		//System.out.println("Event Information: " +incomingData.toString());
-		return Response.status(200)
-				.entity(newEvent.toJSON())
-				.build();	
+		//return Response.status(200)
+		//.entity(newEvent.toJSON())
+		//.build();
+		return Response.ok()
+	               .entity(builder.toString())
+	               .header("Access-Control-Allow-Origin", "*")
+	               .build();
 		
 		
 	 } 

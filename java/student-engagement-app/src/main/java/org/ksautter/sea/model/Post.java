@@ -2,6 +2,7 @@ package org.ksautter.sea.model;
 
 import java.util.List;
 
+
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Column;

@@ -8,13 +8,15 @@ import org.ksautter.sea.server.ServerLocations;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
 import java.util.List;
 
 @Path("/Locations")
 public class GatewayLocation {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	  public String getAllLocations() 
+	  public Response getAllLocations() 
 	  {
 		ServerLocations request = new ServerLocations();
 		List<Location> list1 = request.getLocations();
@@ -34,6 +36,10 @@ public class GatewayLocation {
 		}
 		builder.append("]");
 		builder.append("}");
-		return builder.toString();
+		//return builder.toString();
+		return Response.ok()
+	               .entity(builder.toString())
+	               .header("Access-Control-Allow-Origin", "*")
+	               .build();
 	  }
 }

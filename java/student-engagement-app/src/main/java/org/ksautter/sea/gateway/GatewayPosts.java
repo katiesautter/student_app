@@ -23,10 +23,14 @@ import java.util.List;
 public class GatewayPosts {
 	@GET
 	@Produces(MediaType.TEXT_PLAIN)
-	  public String getPublicPosts() 
+	  public Response getPublicPosts() 
 	  {
 		ServerPosts request = new ServerPosts();
-		return request.getPosts().toString();
+		//return request.getPosts().toString();
+		return Response.ok()
+	               .entity(request.getPosts().toString())
+	               .header("Access-Control-Allow-Origin", "*")
+	               .build();
 	  } 
 		@POST
 		@Consumes(MediaType.APPLICATION_JSON)
@@ -57,9 +61,13 @@ public class GatewayPosts {
 	        System.out.println(newPost.toJSON());
 	        
 			//System.out.println("Event Information: " +incomingData.toString());
-			return Response.status(200)
-					.entity(newPost.toJSON())
-					.build();	
+			//return Response.status(200)
+				//	.entity(newPost.toJSON())
+					//.build();	
+			return Response.ok()
+		               .entity(builder.toString())
+		               .header("Access-Control-Allow-Origin", "*")
+		               .build();
 			
 			
 		 } 

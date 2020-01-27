@@ -1,32 +1,55 @@
 package org.ksautter.sea.server;
+import java.sql.Connection;
+
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
 import org.ksautter.sea.model.Event;
 import org.ksautter.sea.model.HibernateUtil;
-import org.ksautter.sea.model.User;
-import org.ksautter.sea.model.PrivateEventUser;
 import org.ksautter.sea.model.Location;
 import org.ksautter.sea.model.Post;
+import org.ksautter.sea.model.User;
+import org.junit.BeforeClass;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
-
 public class ServerTest 
 extends TestCase
 {
+	@BeforeClass
+	public static void beforeClass() throws SQLException {
+		ServerTest1();
+	} 
+	
+	public static void ServerTest1() throws SQLException {
+    	Connection connection = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/sea_base", "ksautter", "4boodles");
+    	Statement statement = connection.createStatement();
+    	statement.addBatch( "drop database if exists sea_test;");
+    	statement.addBatch( "CREATE DATABASE sea_test WITH TEMPLATE sea_base" );
+    	statement.executeBatch();
+    	statement.close();
+    	connection.close(); 
+      }
+
 	/**
      * Create the test case
      *
      * @param testName name of the test case
+	 * @throws SQLException 
      */
+	 
+	
     public ServerTest( String testName )
     {
         super( testName );
-    }
-
+    } 
+    
+   
     /**
      * @return the suite of tests being tested
      */
@@ -40,6 +63,7 @@ extends TestCase
     {
         assertTrue( true );
     }
+    
     
     public void testEvents()
     {

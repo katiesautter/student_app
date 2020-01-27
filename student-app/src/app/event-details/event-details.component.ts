@@ -9,11 +9,13 @@ import { ActivatedRoute } from '@angular/router';
 export class EventDetailsComponent implements OnInit {
 
   id: String;
+  title: String;
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
  
   this.id = this.route.snapshot.params.id;
+  this.title = this.route.snapshot.params.title;
  
   }
 

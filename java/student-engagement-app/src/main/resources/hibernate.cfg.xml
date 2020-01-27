@@ -10,6 +10,7 @@
         <property name="use_sql_comments">false</property>
  
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        <property name="connection.pool_size">100</property>
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
         <property name="hibernate.connection.url">${JDBC_CONNECTION_STRING}</property>
         <property name="hibernate.connection.username">${JDBC_USERNAME}</property>
