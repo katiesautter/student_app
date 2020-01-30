@@ -34,5 +34,15 @@ public class ServerEvents {
 		
 	}
 	
+	public Event getEvent(int id)
+	{
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.openSession();		
+		session.beginTransaction();
+		Event event = session.get(Event.class, id);
+		return event;
+		
+	}
+	
 }
 

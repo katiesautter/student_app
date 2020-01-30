@@ -1,5 +1,6 @@
 <div>
-    <h2 style = "color:blue">{{id}}!</h2> 
+    <h2 style = "color:blue">{{event.id}}!</h2> 
+    <h2 style = "color:blue">{{event.title}}!</h2> 
    
     
 
@@ -9,7 +10,7 @@
 
 <ul>
     <li *ngFor="let post of posts">
-        <span> {{post.id}} </span>
+        <span> {{post.message}} </span>
         
         
     </li>

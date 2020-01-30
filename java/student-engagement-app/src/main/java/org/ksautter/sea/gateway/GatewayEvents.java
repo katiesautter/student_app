@@ -63,9 +63,19 @@ public class GatewayEvents {
 		int number = Integer.parseInt(id);
 		ServerEvents request = new ServerEvents();
 		List<Post> list = request.eventPosts(number);
+		Event event = request.getEvent(number);
 		StringBuilder builder = new StringBuilder();
 		
+		//builder.append("{");
 		builder.append("{");
+		builder.append("\"Event\":");
+		//builder.append("[");
+		builder.append(event.toJSON());
+		//builder.append("]");
+		builder.append(",");
+		//builder.append("}");
+		
+		//builder.append("{");
 		builder.append("\"Posts\":");
 		builder.append("[");
 		for (int i = 0; i < list.size(); i++)
@@ -80,6 +90,8 @@ public class GatewayEvents {
 		}
 		builder.append("]");
 		builder.append("}");
+		//builder.append("}");
+		
 		
 		return Response.ok()
 	               .entity(builder.toString())
@@ -95,6 +107,7 @@ public class GatewayEvents {
     	String json = incomingData;
         JSONObject obj = new JSONObject(json);
         
+       
         String title = obj.getString("title");
         System.out.println(title);
         String status = obj.getString("status");

@@ -26,6 +26,7 @@ export class EventDetailsComponent implements OnInit {
   id: String;
  // title: String;
   posts = [];
+  event = {};
   //[{"id":3,"message":"Come support the girls volleyball team!!","user_id":2,"event_id":4},{"id":4,"message":"Volleyball game tonight!!","user_id":2,"event_id":4}];
   //sub: any;
   //service: any;
@@ -42,6 +43,7 @@ export class EventDetailsComponent implements OnInit {
         .subscribe( response => { 
           console.log("return from get posts for event");
           this.posts = response.Posts;
+          this.event = response.Event;
         }, err => {
           console.log(err.message);
 

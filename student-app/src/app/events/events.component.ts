@@ -10,11 +10,7 @@ import { switchMap } from 'rxjs/operators';
 })
 export class EventsComponent implements OnInit {
 
-  /*@Input() id: string;
-  @Input() title: string;
-  @Input() status: string;
-  @Input() datetime: string;
-  @Input() fk_location: string; */
+
 
   //events2=['Volleyball Game', 'Game Night','Study Session','Living Issues Study Group','Chess Tournament', 'Floor Meetings']; 
   //posts = [{"id":3,"message":"Come support the girls volleyball team!!","user_id":2,"event_id":4},{"id":4,"message":"Volleyball game tonight!!","user_id":2,"event_id":4}];
