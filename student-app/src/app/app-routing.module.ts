@@ -21,6 +21,14 @@ const routes: Routes = [
     redirectTo: '/events',
     pathMatch: 'full'
   },
+
+/*  {path : 'events', 
+  component : EventDetailsComponent, 
+  data : {id : 'event.id', title : 'event.title', status : 'event.status', date_time : 'event.date_time', fk_location_id : 'event.fk_location_id'}
+  }, */
+
+
+
 ];
 
 @NgModule({

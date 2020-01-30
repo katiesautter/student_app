@@ -3,12 +3,15 @@
 <ul>
     <li *ngFor="let event of events">
         <nav> 
-            <a   [routerLink]="['/eventsdetails', event.title]" routerLinkActive="active">{{event.title}}</a>  
+            
+             <a [routerLink]="['/eventsdetails', event.id]" routerLinkActive="active">{{event.title}}</a>  
             
         </nav>
         <h3></h3>
         <router-outlet></router-outlet> 
     </li>
 </ul> 
+
+
 
 

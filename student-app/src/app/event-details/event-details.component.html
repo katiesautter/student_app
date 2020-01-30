@@ -1,17 +1,31 @@
 <div>
     <h2 style = "color:blue">{{id}}!</h2> 
-<span> </span> 
+   
+    
 
 </div>
 
+<h3>All Event Posts:</h3> 
+
+<ul>
+    <li *ngFor="let post of posts">
+        <span> {{post.id}} </span>
+        
+        
+    </li>
+</ul> 
+
 <!--
 <ul>
+    <a   [routerLink]="['/eventsdetails', event.title]" routerLinkActive="active">{{event.title}}</a> 
     <li *ngFor="let event of events">
         <div *ngIf="routerLink.{{event.title}} = {{event.title}}">
             <h3>Event Name: {{event.title}}</h3> 
             <span>"ID of this event is: {{event.id}}"</span> 
         </div>
     </li>
+    <span> {{post.id}} </span>
+        <span> {{post.message}} </span>
 </ul>  -->
 
   

@@ -13,8 +13,8 @@ import org.ksautter.sea.model.Post;
 public class ServerPosts {
 	public List<Post> getPosts()
 	{
-		Map<String, String> env = System.getenv();
-		env.forEach((k, v) -> System.out.println(k + ":" + v));
+		/*Map<String, String> env = System.getenv();
+		env.forEach((k, v) -> System.out.println(k + ":" + v)); */
 		SessionFactory sf = HibernateUtil.getSessionFactory();
         Session session = sf.openSession();
 		session.beginTransaction();
