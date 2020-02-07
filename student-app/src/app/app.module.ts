@@ -5,12 +5,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EventsComponent } from './events/events.component';
 import { EventDetailsComponent } from './event-details/event-details.component';
+import { LocationsComponent } from './locations/locations.component';
+import { LocationDetailsComponent } from './location-details/location-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EventsComponent,
-    EventDetailsComponent
+    EventDetailsComponent,
+    LocationsComponent,
+    LocationDetailsComponent
   ],
   imports: [
     BrowserModule,

@@ -22,7 +22,7 @@ import org.ksautter.sea.server.ServerUsers;
 public class GatewayUsers {
 	@GET
 	@Produces(MediaType.TEXT_PLAIN)
-	  public String getUsers() 
+	  public Response getUsers() 
 	  {
 		ServerUsers request = new ServerUsers();
 		List<User> list1 = request.getUser();
@@ -42,7 +42,11 @@ public class GatewayUsers {
 		}
 		builder.append("]");
 		builder.append("}");
-		return builder.toString();
+		//return builder.toString();
+		return Response.ok()
+	               .entity(builder.toString())
+	               .header("Access-Control-Allow-Origin", "*")
+	               .build();
 	  }
 	  
 	@POST
@@ -65,9 +69,13 @@ public class GatewayUsers {
         builder.append(newUser.toJSON());
         System.out.println(newUser.toJSON());
         
-		return Response.status(200)
-				.entity(newUser.toJSON())
-				.build();	
+		//return Response.status(200)
+			//	.entity(newUser.toJSON())
+			//	.build();	
+		return Response.ok()
+	               .entity(newUser.toJSON())
+	               .header("Access-Control-Allow-Origin", "*")
+	               .build();
 		
 		
 	 } 

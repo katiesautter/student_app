@@ -78,6 +78,19 @@ public String toJSON() {
 	return builder.toString();
 }
 
+public String usernameToJSON()
+{
+	StringBuilder builder = new StringBuilder();
+	
+	builder.append("\"username\":");
+	builder.append("\"");
+	builder.append(username);
+	builder.append("\"");
+	builder.append(",");
+	
+	return builder.toString();
+}
+
 public void save() {
 
 	// Event event = this;

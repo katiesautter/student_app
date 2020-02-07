@@ -13,13 +13,14 @@ CREATE TABLE events (
     id SERIAL PRIMARY KEY,
     title varchar(150) NOT NULL, 
     status varchar(15), 
-    date_time TIMESTAMP NOT NULL, 
+    date_time date NOT NULL, 
     fk_location_id int REFERENCES locations(id) NOT NULL
 );
 
 CREATE TABLE posts (
     id SERIAL PRIMARY KEY, 
     message varchar(1000) NOT NULL, 
+    date_time TIMESTAMP NOT NULL, 
     fk_user_id int REFERENCES users(id) NOT NULL,
     fk_events_id int REFERENCES events(id) NOT NULL
 );

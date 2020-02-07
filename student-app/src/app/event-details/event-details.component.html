@@ -1,32 +1,22 @@
-<div>
-    <h2 style = "color:blue">{{event.id}}!</h2> 
-    <h2 style = "color:blue">{{event.title}}!</h2> 
-   
-    
+<div> 
+    <h2 style = "color:blue">{{event.title}}:</h2> 
+    <h5>Date of event: {{event.datetime}}</h5> 
+    <h5>Location: {{event.locationName}}</h5> 
 
 </div>
 
-<h3>All Event Posts:</h3> 
+<h3>Posts:</h3> 
 
 <ul>
     <li *ngFor="let post of posts">
-        <span> {{post.message}} </span>
+        <h4>{{post.message}}</h4> 
+         <span> Posted by: {{post.username}} </span>
+         <h3></h3>
+         <span> Posted at: {{post.datetime}} </span>
         
         
     </li>
 </ul> 
 
-<!--
-<ul>
-    <a   [routerLink]="['/eventsdetails', event.title]" routerLinkActive="active">{{event.title}}</a> 
-    <li *ngFor="let event of events">
-        <div *ngIf="routerLink.{{event.title}} = {{event.title}}">
-            <h3>Event Name: {{event.title}}</h3> 
-            <span>"ID of this event is: {{event.id}}"</span> 
-        </div>
-    </li>
-    <span> {{post.id}} </span>
-        <span> {{post.message}} </span>
-</ul>  -->
 
   

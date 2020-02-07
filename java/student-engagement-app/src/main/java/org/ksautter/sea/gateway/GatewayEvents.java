@@ -21,8 +21,12 @@ import javax.ws.rs.core.Response.ResponseBuilder;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.ksautter.sea.model.Event;
+import org.ksautter.sea.model.User;
 import org.ksautter.sea.model.Post;
+import org.ksautter.sea.model.Location;
 import org.ksautter.sea.server.ServerEvents;
+import org.ksautter.sea.server.ServerLocations;
+import org.ksautter.sea.server.ServerUsers;
 
 @Path("/Events")
 public class GatewayEvents {
@@ -62,20 +66,20 @@ public class GatewayEvents {
 	  {
 		int number = Integer.parseInt(id);
 		ServerEvents request = new ServerEvents();
+		ServerUsers userRequest = new ServerUsers();
+		ServerLocations locationRequest = new ServerLocations();
 		List<Post> list = request.eventPosts(number);
 		Event event = request.getEvent(number);
+		int locID = event.getFkloc();
+		Location location = locationRequest.getLocationName(locID); 
 		StringBuilder builder = new StringBuilder();
 		
-		//builder.append("{");
 		builder.append("{");
 		builder.append("\"Event\":");
-		//builder.append("[");
-		builder.append(event.toJSON());
-		//builder.append("]");
+		builder.append(event.locationToJSON());
+		builder.append(location.locationNameToJSON());
 		builder.append(",");
-		//builder.append("}");
 		
-		//builder.append("{");
 		builder.append("\"Posts\":");
 		builder.append("[");
 		for (int i = 0; i < list.size(); i++)
@@ -85,13 +89,16 @@ public class GatewayEvents {
 				builder.append(",");
 			}
 			Post posts = list.get(i);
-			builder.append(posts.toJSON());
+			int userID = posts.getFkuser();
+			User username = userRequest.getUsername(userID);
+			builder.append(posts.postsToJSON1());
+			builder.append(username.usernameToJSON());
+			builder.append(posts.postsToJSON2());
 			
 		}
 		builder.append("]");
 		builder.append("}");
 		//builder.append("}");
-		
 		
 		return Response.ok()
 	               .entity(builder.toString())

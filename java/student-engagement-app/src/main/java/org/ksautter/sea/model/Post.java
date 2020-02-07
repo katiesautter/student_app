@@ -1,5 +1,6 @@
 package org.ksautter.sea.model;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -26,21 +27,13 @@ public class Post
 	private String message; 
 	private int fk_user; 
 	private int fk_events; 
+	private Date date_time;
 
 	@ManyToOne
 	@JoinColumn(name ="fk_events_id")
 	private Event event;
-	/*public Event getEvents()
-	{
-		return event; 
-	}
 	
-	public void setEvents(Event event) {
-	    this.event = event;
-	}	*/
-
 	
-
 	public Post() {}
 	public Post(String msg, int fkuser, int fkevents) {
 		this.message = msg;
@@ -66,6 +59,15 @@ public class Post
 
 	public void setMsg( String msg ) {
 		this.message = msg;
+	}
+	
+	@Column(name = "date_time")
+	public Date getDate() {
+		return date_time;
+	}
+
+	public void setDate(Date date) {
+		this.date_time = date;
 	}
 
 	@Column(name = "fk_user_id")
@@ -106,6 +108,12 @@ public class Post
 		builder.append(message);
 		builder.append("\"");
 		builder.append(",");
+		
+		builder.append("\"datetime\":");
+		builder.append("\"");
+		builder.append(date_time);
+		builder.append("\"");
+		builder.append(",");
 	
 		builder.append("\"user_id\":");
 		builder.append(fk_user);
@@ -117,6 +125,41 @@ public class Post
 		
 		return builder.toString();
 	}
+	public String postsToJSON1()
+	{
+		StringBuilder builder = new StringBuilder();
+		
+		builder.append("{");
+		builder.append("\"id\":");
+		builder.append(id);
+		builder.append(",");
+		
+		builder.append("\"message\":");
+		builder.append("\"");
+		builder.append(message);
+		builder.append("\"");
+		builder.append(",");
+		
+		builder.append("\"datetime\":");
+		builder.append("\"");
+		builder.append(date_time);
+		builder.append("\"");
+		builder.append(",");
+		
+		return builder.toString();
+	}
+	public String postsToJSON2()
+	{
+		StringBuilder builder = new StringBuilder();
+
+		builder.append("\"event_id\":");
+		builder.append(fk_events);
+		builder.append("}"); 
+		return builder.toString();
+	}
+	
+	
+	
 	public void save() {
 
 		// Event event = this;

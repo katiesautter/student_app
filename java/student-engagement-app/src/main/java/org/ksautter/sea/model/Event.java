@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -31,6 +32,7 @@ public class Event {
 	public List<Post> getPosts() {
 		return posts;
 	}
+
 
 	public void setPosts(List<Post> posts) {
 		this.posts = posts;
@@ -142,6 +144,37 @@ public class Event {
 
 		return builder.toString();
 	}
+	
+	public String locationToJSON() {
+		StringBuilder builder = new StringBuilder();
+
+		builder.append("{");
+		builder.append("\"id\":");
+		builder.append(id);
+		builder.append(",");
+
+		builder.append("\"title\":");
+		builder.append("\"");
+		builder.append(title);
+		builder.append("\"");
+		builder.append(",");
+
+		builder.append("\"status\":");
+		builder.append("\"");
+		builder.append(status);
+		builder.append("\"");
+		builder.append(",");
+
+		builder.append("\"datetime\":");
+		builder.append("\"");
+		builder.append(date_time);
+		builder.append("\"");
+		builder.append(",");
+
+		return builder.toString();
+	}
+	
+
 
 	public void save() {
 

@@ -1,0 +1,14 @@
+ <h1>Locations</h1>
+
+
+<ul>
+    <li *ngFor="let location of locations">
+        <nav> 
+            <a [routerLink]="['/locationsdetails', location.id]" routerLinkActive="active">{{location.name}}</a>  
+          
+        </nav>
+        <h3></h3>
+        <router-outlet></router-outlet> 
+    </li>
+</ul> 
+

@@ -53,7 +53,7 @@ public class GatewayTest extends TestCase {
 		assertTrue(true);
 	}
 
-	public void testEvents() throws JSONException, ParseException {
+/*	public void testEvents() throws JSONException, ParseException {
 		
 		//gets public events from database
 		GatewayEvents getPublic = new GatewayEvents();
@@ -111,9 +111,9 @@ public class GatewayTest extends TestCase {
 	
 		
 	}
-}
+
 	
-/*	public void testPosts() throws JSONException, ParseException {
+	public void testPosts() throws JSONException, ParseException {
 	
 		//creating a post and adding to the database 
 		String postJson = "{\"message\":\"Come to girls bball!\",\"fk_user_id\": 4,\"fk_events_id\": 3}\n"
@@ -140,7 +140,7 @@ public class GatewayTest extends TestCase {
 		System.out.println("ALL LOCATIONS" + locationsJson);
 		
 		//testing JSON for all locations
-		JSONObject obj = new JSONObject(locationsJson);
+		JSONObject obj = new JSONObject(locationsJson.getEntity().toString());
 		JSONArray arr = obj.getJSONArray("Locations");
 		for (int i = 0; i < arr.length(); i++) {
 			String ids = arr.getJSONObject(i).getString("id");
@@ -176,14 +176,14 @@ public class GatewayTest extends TestCase {
 	{
 		//gets users from database
 				GatewayUsers users = new GatewayUsers();
-				String usersJson = users.getUsers();
+				Response usersJson = users.getUsers();
 				System.out.println(usersJson);
 				assertTrue(usersJson != null);
 				//assertTrue(usersJson.getLength() > 5);
 				//assertTrue(usersJson.contains("becca"));
 				
 				//testing JSON for all users
-				JSONObject obj = new JSONObject(usersJson);
+				JSONObject obj = new JSONObject(usersJson.getEntity().toString());
 				JSONArray arr = obj.getJSONArray("Users");
 				for (int i = 0; i < arr.length(); i++) {
 					String ids = arr.getJSONObject(i).getString("id");
@@ -206,5 +206,24 @@ public class GatewayTest extends TestCase {
 				String username = obj2.getString("username");
 				System.out.println(username);
 				System.out.println("JSON for new added user is working successfully");
+	} */
+	public void testLocations() throws JSONException
+	{
+		//getting all locations from database 
+		GatewayLocation locations = new GatewayLocation();
+		Response locationsJson = locations.getAllLocations();
+		System.out.println("ALL LOCATIONS" + locationsJson);
+		
+		//testing JSON for all locations
+		JSONObject obj = new JSONObject(locationsJson.getEntity().toString());
+		JSONArray arr = obj.getJSONArray("Locations");
+		for (int i = 0; i < arr.length(); i++) {
+			String ids = arr.getJSONObject(i).getString("id");
+			System.out.println(ids);
+			System.out.println("JSON for locations is working successfully");
+			}
+		String id = "4";
+		Response eventPostsJson = locations.getLocation(id);
+		System.out.println(eventPostsJson.getEntity().toString());
 	}
-} */
+} 
