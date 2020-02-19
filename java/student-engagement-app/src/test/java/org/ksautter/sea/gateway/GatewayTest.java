@@ -1,7 +1,11 @@
 package org.ksautter.sea.gateway;
 
-import org.junit.BeforeClass;
+//import org.junit.Before;
+
+//import org.junit.BeforeClass;
+//import org.junit.jupiter.api.BeforeAll;
 import org.json.JSONObject;
+import org.junit.BeforeClass;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -17,20 +21,8 @@ import junit.framework.TestSuite;
 
 public class GatewayTest extends TestCase {
 
-	@BeforeClass
-	public static void beforeClass() throws SQLException {
-		GatewayTest1();
-	} 
 	
-	public static void GatewayTest1() throws SQLException {
-    	Connection connection = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/sea_base", "ksautter", "4boodles");
-    	Statement statement = connection.createStatement();
-    	statement.addBatch( "drop database if exists sea_test;");
-    	statement.addBatch( "CREATE DATABASE sea_test WITH TEMPLATE sea_base" );
-    	statement.executeBatch();
-    	statement.close();
-    	connection.close(); 
-      }
+	
 	/**
 	 * Create the test case
 	 *
@@ -49,11 +41,30 @@ public class GatewayTest extends TestCase {
 		return new TestSuite(GatewayTest.class);
 	}
 
+	@BeforeClass
+	public static void testBefore() throws SQLException {
+		GatewayTest1();
+	}  
+	
+	
+	public static void GatewayTest1() throws SQLException {
+    	Connection connection = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/sea_base", "ksautter", "4boodles");
+    	Statement statement = connection.createStatement();
+    	statement.addBatch( "drop database if exists sea_test;");
+    	statement.addBatch( "CREATE DATABASE sea_test WITH TEMPLATE sea_base" );
+    	statement.executeBatch();
+    	statement.close();
+    	connection.close(); 
+		System.out.println("NEW DATABASE BUILD");
+      }
+	
+	//@BeforeClass
 	public void testApp() {
-		assertTrue(true);
+		//assertTrue(true);
+		
 	}
 
-/*	public void testEvents() throws JSONException, ParseException {
+	public void testEvents() throws JSONException, ParseException {
 		
 		//gets public events from database
 		GatewayEvents getPublic = new GatewayEvents();
@@ -72,6 +83,21 @@ public class GatewayTest extends TestCase {
 			System.out.println("JSON for public events is working successfully");
 		}
 		
+		GatewayEvents getPrivate = new GatewayEvents();
+		Response privEventsJson = getPrivate.getPrivateEvents();
+		System.out.println(privEventsJson);
+		assertTrue(privEventsJson != null);
+		//assertTrue(eventsJson.getLength() > 5);
+		//assertTrue(eventsJson.contains("Game Night"));
+		
+		//testing JSON for all public events
+		JSONObject obj4 = new JSONObject(privEventsJson.getEntity().toString());
+		JSONArray arr4 = obj4.getJSONArray("PrivateEvents");
+		for (int i = 0; i < arr4.length(); i++) {
+			String ids = arr4.getJSONObject(i).getString("id"); //assertEquals getJSonObject(1) equals 1
+			System.out.println(ids);
+			System.out.println("JSON for private events is working successfully");
+		}
 		
 		//getting posts for a specific event from database
 		String id = "4";
@@ -112,11 +138,11 @@ public class GatewayTest extends TestCase {
 		
 	}
 
-	
+/*	
 	public void testPosts() throws JSONException, ParseException {
 	
 		//creating a post and adding to the database 
-		String postJson = "{\"message\":\"Come to girls bball!\",\"fk_user_id\": 4,\"fk_events_id\": 3}\n"
+		String postJson = "{\"message\":\"Come to girls bball!\",\"date_time\": \"11-12-2019 21:08:44\",\"fk_user_id\": 4,\"fk_events_id\": 3}\n"
 				+ "";
 		GatewayPosts posts = new GatewayPosts();
 		Response response = posts.createPost(postJson);
@@ -132,7 +158,7 @@ public class GatewayTest extends TestCase {
 		System.out.println("JSON for new added post is working successfully");
 	}
 
-	public void testLocations() throws JSONException
+	public void testLocations1() throws JSONException
 	{
 		//getting all locations from database 
 		GatewayLocation locations = new GatewayLocation();
@@ -147,11 +173,11 @@ public class GatewayTest extends TestCase {
 			System.out.println(ids);
 			System.out.println("JSON for locations is working successfully");
 			}
-	}
+	} 
 	
 
 	public void testJSON() throws JSONException {
-		String json = "{\"Posts\":[{\"id\":3,\"message\":\"Come support the girls volleyball team!!\",\"user_id\":2,\"event_id\":4},{\"id\":4,\"message\":\"Volleyball game tonight!!\",\"user_id\":2,\"event_id\":4}]}\n"
+		String json = "{\"Posts\":[{\"id\":3,\"message\":\"Come support the girls volleyball team!!\",\"date_time\": \"11-12-2019 21:08:44\",\"user_id\":2,\"event_id\":4},{\"id\":4,\"message\":\"Volleyball game tonight!!\",\"user_id\":2,\"event_id\":4}]}\n"
 				+ "";
 		JSONObject obj = new JSONObject(json);
 
@@ -192,7 +218,7 @@ public class GatewayTest extends TestCase {
 				}
 		
 				//creating a user and adding to the database 
-				String userJson = "{\"username\":\"joamy6\",\"password\":\"matas123\"}\n"
+				String userJson = "{\"username\":\"suudufis\",\"password\":\"cannon7\"}\n"
 						+ "";
 				GatewayUsers user2 = new GatewayUsers();
 				Response response = user2.createUser(userJson);
@@ -206,7 +232,7 @@ public class GatewayTest extends TestCase {
 				String username = obj2.getString("username");
 				System.out.println(username);
 				System.out.println("JSON for new added user is working successfully");
-	} */
+	} 
 	public void testLocations() throws JSONException
 	{
 		//getting all locations from database 
@@ -225,5 +251,5 @@ public class GatewayTest extends TestCase {
 		String id = "4";
 		Response eventPostsJson = locations.getLocation(id);
 		System.out.println(eventPostsJson.getEntity().toString());
-	}
-} 
+	}*/
+}  

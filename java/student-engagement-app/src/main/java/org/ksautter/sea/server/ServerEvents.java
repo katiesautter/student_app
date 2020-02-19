@@ -24,6 +24,17 @@ public class ServerEvents {
 		
 	}
 	
+	public List<Event> privateEvents()
+	{
+		
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.openSession();
+		session.beginTransaction();
+		List<Event> eventList= session.createQuery("SELECT e FROM events e where status = 'private'", Event.class).list();
+		return eventList;
+		
+	}
+	
 	public List<Post> eventPosts(int id)
 	{
 		SessionFactory sf = HibernateUtil.getSessionFactory();

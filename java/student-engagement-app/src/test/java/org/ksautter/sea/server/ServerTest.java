@@ -1,6 +1,7 @@
 package org.ksautter.sea.server;
 import java.sql.Connection;
 
+
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -8,12 +9,15 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.junit.BeforeClass;
 import org.ksautter.sea.model.Event;
 import org.ksautter.sea.model.HibernateUtil;
 import org.ksautter.sea.model.Location;
 import org.ksautter.sea.model.Post;
 import org.ksautter.sea.model.User;
-import org.junit.BeforeClass;
+//import org.junit.BeforeClass;
+//import org.junit.jupiter.api.BeforeAll;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -34,6 +38,7 @@ extends TestCase
     	statement.executeBatch();
     	statement.close();
     	connection.close(); 
+    	System.out.println("NEW DATABASE BUILD");
       }
 
 	/**
@@ -58,10 +63,12 @@ extends TestCase
         return new TestSuite( ServerTest.class );
     }
 
-    
-    public void testApp()
+
+    //@BeforeClass
+    public void testApp() throws SQLException
     {
         assertTrue( true );
+        //ServerTest1();
     }
     
     

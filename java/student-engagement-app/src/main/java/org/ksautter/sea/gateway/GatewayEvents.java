@@ -10,6 +10,8 @@ import java.util.Locale;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
+import javax.ws.rs.OPTIONS;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -58,7 +60,37 @@ public class GatewayEvents {
 	               .header("Access-Control-Allow-Origin", "*")
 	               .build();
 	  }
-
+	
+	@Path("/Private")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	  public Response getPrivateEvents() 
+	  {
+		ServerEvents request = new ServerEvents();
+		List<Event> list1 = request.privateEvents();
+		StringBuilder builder = new StringBuilder();
+		builder.append("{");
+		builder.append("\"PrivateEvents\":");
+		builder.append("[");
+		for (int i = 0; i < list1.size(); i++)
+		{
+			if ( i != 0)
+			{
+				builder.append(",");
+			}
+			Event events = list1.get(i);
+			builder.append(events.toJSON());
+			
+		}
+		builder.append("]");
+		builder.append("}");
+		
+		return Response.ok()
+	               .entity(builder.toString())
+	               .header("Access-Control-Allow-Origin", "*")
+	               .build();
+	  }
+	
 	@Path("{id}")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
@@ -106,6 +138,17 @@ public class GatewayEvents {
 	               .build();
 		
 	  }
+	
+	
+	@OPTIONS
+	public Response corsHandler(@HeaderParam("Access-Control-Request-Headers") String requestH) {
+	    ResponseBuilder rb = Response.ok();
+	    return rb
+	             .header("Access-Control-Allow-Origin", "*")
+	             .header("Access-Control-Allow-Headers", "content-type")
+	             .header("Access-Control-Allow-Methods", "GET,POST,OPTIONS")
+	    		 .build();
+	}
 	
     @POST
 	@Consumes(MediaType.APPLICATION_JSON)

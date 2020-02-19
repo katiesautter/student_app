@@ -6,7 +6,9 @@ import { AppComponent } from './app.component';
 import { EventsComponent } from './events/events.component';
 import { EventDetailsComponent } from './event-details/event-details.component';
 import { LocationsComponent } from './locations/locations.component';
-import { LocationDetailsComponent } from './location-details/location-details.component';
+import { LocationDetailsComponent } from './location-details/location-details.component';import { FormsModule }   from '@angular/forms';
+import { DiscussionsComponent } from './discussions/discussions.component';
+
 
 @NgModule({
   declarations: [
@@ -14,12 +16,14 @@ import { LocationDetailsComponent } from './location-details/location-details.co
     EventsComponent,
     EventDetailsComponent,
     LocationsComponent,
-    LocationDetailsComponent
+    LocationDetailsComponent,
+    DiscussionsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

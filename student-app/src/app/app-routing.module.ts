@@ -4,6 +4,7 @@ import { EventDetailsComponent } from './event-details/event-details.component';
 import { EventsComponent } from './events/events.component';
 import { LocationsComponent } from './locations/locations.component';
 import { LocationDetailsComponent} from './location-details/location-details.component'
+import { DiscussionsComponent } from './discussions/discussions.component';
 
 
 const routes: Routes = [
@@ -34,6 +35,12 @@ const routes: Routes = [
     path: 'locationsdetails/:id',
     component: LocationDetailsComponent,
     data: { title: 'locations' }
+  }, 
+
+  {
+    path: 'discussions',
+    component: DiscussionsComponent,
+    data: { title: 'discussions' }
   }, 
 
 ];

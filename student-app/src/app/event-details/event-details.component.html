@@ -2,6 +2,8 @@
     <h2 style = "color:blue">{{event.title}}:</h2> 
     <h5>Date of event: {{event.datetime}}</h5> 
     <h5>Location: {{event.locationName}}</h5> 
+    <a [routerLink]="['/locationsdetails']" routerLinkActive="active">{{event.locationName}}</a>  
+
 
 </div>
 
@@ -17,6 +19,18 @@
         
     </li>
 </ul> 
+<form>
+    <h3>  </h3>
+    <h3>  </h3>
+    <h3 style = "color:purple">Create a Post About This Event:</h3> 
+    <h3></h3>
+    <h4> Write a post message:</h4>
+    <h3></h3>
+    <textarea type="text" [(ngModel)]='postInfo' name="postInfo" placeholder="Type something here...."></textarea>
+    <h3></h3>
+    <button class="button" type="submit" (click)="onSubmit()" >Create Post</button>
 
+    
+</form>
 
   

@@ -1,0 +1,13 @@
+
+<h1>Private Discussions</h1>
+
+
+<ul>
+    <li *ngFor="let discussion of discussions">
+        <nav> 
+            <h4>{{discussion.title}}</h4>           
+        </nav>
+        <h3></h3>
+        <router-outlet></router-outlet> 
+    </li>
+</ul> 

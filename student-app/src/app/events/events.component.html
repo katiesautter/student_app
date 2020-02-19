@@ -13,5 +13,24 @@
 </ul> 
 
 
+<form>
+    <h3>  </h3>
+    <h3>  </h3>
+    <h3 style = "color:purple">Create a Public Event:</h3> 
+    <h3></h3>
+    <h4> Enter Title:</h4>
+    <h3></h3>
+    <textarea type="text" [(ngModel)]='eventTitle' name="eventTitle" placeholder="Type title here...."></textarea>
+    <h3></h3>
+    <h4> Enter Event Date:</h4>
+    <h3></h3>
+    <textarea type="text" [(ngModel)]='eventDate' name="eventDate" placeholder="Type event date here...."></textarea>
+    <h3></h3>
+    <button class="button" type="submit" (click)="onSubmit()" >Create Event</button>
+
+    
+</form>
+
+
 
 
