@@ -8,6 +8,10 @@ import { EventDetailsComponent } from './event-details/event-details.component';
 import { LocationsComponent } from './locations/locations.component';
 import { LocationDetailsComponent } from './location-details/location-details.component';import { FormsModule }   from '@angular/forms';
 import { DiscussionsComponent } from './discussions/discussions.component';
+import { LoginComponent } from './login/login.component';
+import { DiscussionDetailsComponent } from './discussion-details/discussion-details.component';
+import { UserComponent } from './user/user.component';
+import { MapComponent } from './map/map.component';
 
 
 @NgModule({
@@ -17,7 +21,11 @@ import { DiscussionsComponent } from './discussions/discussions.component';
     EventDetailsComponent,
     LocationsComponent,
     LocationDetailsComponent,
-    DiscussionsComponent
+    DiscussionsComponent,
+    LoginComponent,
+    DiscussionDetailsComponent,
+    UserComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,

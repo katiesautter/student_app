@@ -170,6 +170,10 @@ public class Event {
 		builder.append(date_time);
 		builder.append("\"");
 		builder.append(",");
+		
+		builder.append("\"fk_location\":");
+		builder.append(fk_loc_id);
+		builder.append(",");
 
 		return builder.toString();
 	}

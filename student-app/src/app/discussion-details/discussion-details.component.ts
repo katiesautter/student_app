@@ -1,18 +1,14 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { SeaService } from '../sea.service';
-
-
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-event-details',
-  templateUrl: './event-details.component.html', 
-  styleUrls: ['./event-details.component.css']
+  selector: 'app-discussion-details',
+  templateUrl: './discussion-details.component.html',
+  styleUrls: ['./discussion-details.component.css']
 })
-
-
-export class EventDetailsComponent implements OnInit {
+export class DiscussionDetailsComponent implements OnInit {
 
   d = new Date();
   id: String;
@@ -41,7 +37,32 @@ export class EventDetailsComponent implements OnInit {
           this.event = response.Event;
 
           this.locationid = this.event.fk_location;
-
+        /*        
+          if (this.event.locationName == 'Shrader') 
+          {
+              this.locationid = '1';
+          } 
+          else if (this.event.locationName == 'Wolly Lawn')
+          {
+            this.locationid = '2';
+          }
+          else if (this.event.locationName == 'Student Center')
+          {
+            this.locationid = '3';
+          }
+          else if (this.event.locationName == 'Hebrews')
+          {
+            this.locationid = '4';
+          }
+          else if (this.event.locationName == 'Gymnasium')
+          {
+            this.locationid = '5';
+          }
+          else if (this.event.locationName == 'Spange Parlor')
+          {
+            this.locationid = '6';
+          }
+*/
             this.http.get<any>(this.seaService.restUrl() + "Locations/" + this.locationid)
             .subscribe( response => { 
               this.location = response.Location;
@@ -105,5 +126,4 @@ export class EventDetailsComponent implements OnInit {
        
   }
   
-
 }

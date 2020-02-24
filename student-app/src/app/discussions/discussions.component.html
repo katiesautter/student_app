@@ -5,9 +5,26 @@
 <ul>
     <li *ngFor="let discussion of discussions">
         <nav> 
-            <h4>{{discussion.title}}</h4>           
+            <a [routerLink]="['/discussiondetails', discussion.id]" routerLinkActive="active">{{discussion.title}}</a>          
         </nav>
         <h3></h3>
         <router-outlet></router-outlet> 
     </li>
 </ul> 
+
+
+
+<form>
+    <h3>  </h3>
+    <h3>  </h3>
+    <h3 style = "color:purple">Create a Discussion:</h3> 
+    <h3></h3>
+    <h4> Enter Title:  <input type="text" [(ngModel)]='eventTitle' name="eventTitle" placeholder="Type title here...."></h4>
+    <h3></h3>
+    <h4> Enter Date:  <input type="text" [(ngModel)]='eventDate' name="eventDate" placeholder="Type event date here...."></h4>
+    <h3></h3>
+    
+    <button class="button" type="submit" (click)="onSubmit()" >Create Discussion</button>
+
+    
+</form>
