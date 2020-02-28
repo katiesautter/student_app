@@ -2,6 +2,7 @@ package org.ksautter.sea.gateway;
 
 import java.text.ParseException;
 import java.util.List;
+import java.util.UUID;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -16,9 +17,7 @@ import javax.ws.rs.core.Response.ResponseBuilder;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.ksautter.sea.model.Post;
 import org.ksautter.sea.model.User;
-import org.ksautter.sea.server.ServerLocations;
 import org.ksautter.sea.server.ServerUsers;
 
 @Path("/Users")
@@ -93,4 +92,39 @@ public class GatewayUsers {
 		
 		
 	 } 
+
+	@Path("/Login")
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response login(String incomingData) throws JSONException, ParseException
+	{
+    	String json = incomingData;
+        JSONObject obj = new JSONObject(json);
+        String username = obj.getString("username");
+        System.out.println(username);
+        String password = obj.getString("password");
+        System.out.println(password);
+        
+        ServerUsers request = new ServerUsers();
+		User user = request.getSingleUser(username);
+		
+		String actualPassword = user.getPassword();
+		
+		if (!password.equals(actualPassword))
+		{
+			System.out.println("ERROR! USER NOT IN SYSTEM");
+		}
+		
+		UUID uuid = UUID.randomUUID();
+		String token = uuid.toString();
+		int id = user.getId();
+		LoginStore loginstore = LoginStore.getInstance(); 
+		loginstore.addUser(token, id);
+		
+		return Response.ok()
+				   // .entity(user.toJSON())
+	               .header("Access-Control-Allow-Origin", "*")
+	               .build();
+		
+	}
 }

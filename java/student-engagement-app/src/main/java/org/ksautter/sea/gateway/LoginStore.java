@@ -3,6 +3,16 @@ import java.util.HashMap;
 
 public class LoginStore {
 
+    private static LoginStore single_instance = null; 
+    
+    public static LoginStore getInstance() 
+    { 
+        if (single_instance == null) 
+            single_instance = new LoginStore(); 
+  
+        return single_instance; 
+    } 
+    
 	HashMap<String, Integer> hmap = new HashMap<String, Integer>();
 
 	public void addUser(String token, int id)
@@ -12,12 +22,7 @@ public class LoginStore {
 	
 	public boolean findUser(String token)
 	{
-		if (hmap.containsKey(token) == true)
-		{
-			return true;
-		}
-		else return false;
-		
+		return hmap.containsKey(token);
 	}
 	
 	public void removeUser(String token, int id)
@@ -29,9 +34,4 @@ public class LoginStore {
 	{
 		System.out.println("Initial Mappings are: " + hmap);
 	}
-	/*LoginStore()
-	{
-		  HashMap<String, Integer> hmap = new HashMap<String, Integer>();
-		 
-	} */
 }

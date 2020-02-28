@@ -1,6 +1,10 @@
 package org.ksautter.sea.server;
 
 import org.hibernate.query.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -28,5 +32,23 @@ public class ServerUsers {
 		
 	}
 	
+	public User getSingleUser(String username)
+	{
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.openSession();		
+		session.beginTransaction();
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<User> query = builder.createQuery(User.class);
+        Root<User> root = query.from(User.class);
+        query.select(root).where(builder.equal(root.get("username"), username));
+        Query<User> q=session.createQuery(query);
+        User user=q.getSingleResult();
+        System.out.println(user.getUsername());
+		
+	             
+				//session.createQuery("SELECT u FROM users u WHERE username = :username");
+		return user;
+		
+	}
 	
 }

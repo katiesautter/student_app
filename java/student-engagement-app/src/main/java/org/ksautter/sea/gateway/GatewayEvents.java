@@ -66,6 +66,7 @@ public class GatewayEvents {
 	@Produces(MediaType.APPLICATION_JSON)
 	  public Response getPrivateEvents() 
 	  {
+		LoginStore loginstore = LoginStore.getInstance(); 
 		ServerEvents request = new ServerEvents();
 		List<Event> list1 = request.privateEvents();
 		StringBuilder builder = new StringBuilder();
