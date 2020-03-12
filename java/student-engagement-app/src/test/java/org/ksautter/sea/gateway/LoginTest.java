@@ -19,9 +19,9 @@ class LoginTest {
 		LoginStore store = LoginStore.getInstance();
 		store.addUser("123345567", 6);
 		store.addUser("1237", 2);
-		store.addUser("890437", 3);
-		store.addUser("84949495", 3);
-		store.addUser("08098029", 4);
+		//store.addUser("890437", 3);
+		//store.addUser("84949495", 3);
+		//store.addUser("08098029", 4);
 		store.display();
 		boolean response = store.findUser("1237");
 		assertTrue(response);

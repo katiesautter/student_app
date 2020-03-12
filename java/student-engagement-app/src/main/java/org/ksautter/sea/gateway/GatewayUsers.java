@@ -51,7 +51,7 @@ public class GatewayUsers {
 	               .build();
 	  }
 	
-	
+	@Path("/Login")
 	@OPTIONS
 	public Response corsHandler(@HeaderParam("Access-Control-Request-Headers") String requestH) {
 	    ResponseBuilder rb = Response.ok();
@@ -92,10 +92,12 @@ public class GatewayUsers {
 		
 		
 	 } 
+	
 
 	@Path("/Login")
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_PLAIN)
 	public Response login(String incomingData) throws JSONException, ParseException
 	{
     	String json = incomingData;
@@ -122,9 +124,44 @@ public class GatewayUsers {
 		loginstore.addUser(token, id);
 		
 		return Response.ok()
-				   // .entity(user.toJSON())
+	               .entity(token)
 	               .header("Access-Control-Allow-Origin", "*")
+	               .header("Access-Control-Allow-Headers", "content-type")
+		           .header("Access-Control-Allow-Methods", "GET,POST,OPTIONS")
 	               .build();
 		
 	}
+	
+/*   @Path("/Token")
+	@GET
+	@Produces(MediaType.TEXT_PLAIN)
+	  public Response findToken() 
+	  {
+	   ServerUsers request = new ServerUsers();
+		List<User> list1 = request.getUser();
+		StringBuilder builder = new StringBuilder();
+		builder.append("{");
+		builder.append("\"Users\":");
+		builder.append("[");
+		for (int i = 0; i < list1.size(); i++)
+		{
+			if ( i != 0)
+			{
+				builder.append(",");
+			}
+			User users = list1.get(i);
+			builder.append(users.toJSON());
+			
+		}
+		builder.append("]");
+		builder.append("}");
+		//return builder.toString();
+		return Response.ok()
+	               .entity(builder.toString())
+	               .header("Access-Control-Allow-Origin", "*")
+	               .build();
+		
+	  }  */
+	
+	
 }

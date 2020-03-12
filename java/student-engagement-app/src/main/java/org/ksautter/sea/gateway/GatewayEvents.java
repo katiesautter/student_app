@@ -146,7 +146,7 @@ public class GatewayEvents {
 	    ResponseBuilder rb = Response.ok();
 	    return rb
 	             .header("Access-Control-Allow-Origin", "*")
-	             .header("Access-Control-Allow-Headers", "content-type")
+	             .header("Access-Control-Allow-Headers", "content-type, authorization")
 	             .header("Access-Control-Allow-Methods", "GET,POST,OPTIONS")
 	    		 .build();
 	}

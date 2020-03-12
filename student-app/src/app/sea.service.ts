@@ -1,12 +1,30 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
+import {HttpEvent, HttpInterceptor, HttpHandler, HttpRequest} from '@angular/common/http';
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root',
 })
-export class SeaService {
 
-  constructor() { }
+@Injectable()
+export class SeaService  implements HttpInterceptor{
+  
+  token: String;
+  constructor(private injector: Injector) { }
 
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    let seaService = this.injector.get(SeaService);
+    if (seaService.token) 
+    {
+      req = req.clone({
+        setHeaders: {
+          Authorization: `Bearer ${seaService.token}`
+        }
+      });
+    }
+    
+    return next.handle(req);
+  }
 
   restUrl()
   {
@@ -22,4 +40,8 @@ export class SeaService {
     
   }
 
+
+    
+
+  
 }

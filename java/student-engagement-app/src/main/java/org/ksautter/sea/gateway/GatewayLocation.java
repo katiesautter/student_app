@@ -49,6 +49,8 @@ public class GatewayLocation {
 	               .build();
 	  }
 	
+	
+	
 	@Path("{id}")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
