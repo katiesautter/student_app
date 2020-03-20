@@ -64,7 +64,7 @@ public class GatewayTest extends TestCase {
 		
 	}
 
-	public void testEvents() throws JSONException, ParseException {
+	/*public void testEvents() throws JSONException, ParseException {
 		
 		//gets public events from database
 		GatewayEvents getPublic = new GatewayEvents();
