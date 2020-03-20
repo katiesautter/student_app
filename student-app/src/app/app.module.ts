@@ -14,6 +14,8 @@ import { UserComponent } from './user/user.component';
 import { MapComponent } from './map/map.component';
 import {HttpEvent, HttpInterceptor, HttpHandler, HttpRequest} from '@angular/common/http';
 import { SeaService } from './sea.service';
+import { SidebarModule } from 'ng-sidebar';
+import { AddUsersComponent } from './add-users/add-users.component';
 
 
 @NgModule({
@@ -27,7 +29,8 @@ import { SeaService } from './sea.service';
     LoginComponent,
     DiscussionDetailsComponent,
     UserComponent,
-    MapComponent
+    MapComponent,
+    AddUsersComponent
   ],
   imports: [
     BrowserModule,

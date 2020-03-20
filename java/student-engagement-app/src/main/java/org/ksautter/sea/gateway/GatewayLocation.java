@@ -1,6 +1,8 @@
 package org.ksautter.sea.gateway;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
+import javax.ws.rs.OPTIONS;
 
 import org.ksautter.sea.model.Event;
 import org.ksautter.sea.model.Location;
@@ -15,6 +17,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.ResponseBuilder;
 
 import java.util.List;
 
@@ -22,14 +25,18 @@ import java.util.List;
 public class GatewayLocation {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	  public Response getAllLocations() 
+	  public Response getAllLocations(@HeaderParam("Authorization") String token) 
 	  {
+	/*	String[] arrOfStr = token.split(" "); 
+		LoginStore loginstore = LoginStore.getInstance(); 
+		if ((loginstore.findUser(arrOfStr[1])) != false)
+		{ */
 		ServerLocations request = new ServerLocations();
 		List<Location> list1 = request.getLocations();
 		StringBuilder builder = new StringBuilder();
 		builder.append("{");
 		builder.append("\"Locations\":");
-		builder.append("[");
+		builder.append("[");  
 		for (int i = 0; i < list1.size(); i++)
 		{
 			if ( i != 0)
@@ -47,15 +54,42 @@ public class GatewayLocation {
 	               .entity(builder.toString())
 	               .header("Access-Control-Allow-Origin", "*")
 	               .build();
+	/*	}
+		return Response.serverError()
+				.header("Access-Control-Allow-Origin", "*")
+	            .build(); */
 	  }
 	
+	@Path("{id}")
+	@OPTIONS
+	public Response corsHandlerID(@HeaderParam("Access-Control-Request-Headers") String requestH) {
+	    ResponseBuilder rb = Response.ok();
+	    return rb
+	             .header("Access-Control-Allow-Origin", "*")
+	             .header("Access-Control-Allow-Headers", "content-type, authorization")
+	             .header("Access-Control-Allow-Methods", "GET,POST,OPTIONS")
+	    		 .build();
+	}
 	
+	@OPTIONS
+	public Response corsHandler(@HeaderParam("Access-Control-Request-Headers") String requestH) {
+	    ResponseBuilder rb = Response.ok();
+	    return rb
+	             .header("Access-Control-Allow-Origin", "*")
+	             .header("Access-Control-Allow-Headers", "content-type, authorization")
+	             .header("Access-Control-Allow-Methods", "GET,POST,OPTIONS")
+	    		 .build();
+	}
 	
 	@Path("{id}")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	  public Response getLocation(@PathParam("id") String id) 
+	  public Response getLocation(@PathParam("id") String id, @HeaderParam("Authorization") String token) 
 	  {
+	/*	String[] arrOfStr = token.split(" "); 
+		LoginStore loginstore = LoginStore.getInstance(); 
+		if ((loginstore.findUser(arrOfStr[1])) != false)
+		{ */
 		int number = Integer.parseInt(id);
 		ServerLocations request = new ServerLocations();
 		Location location = request.getLocation(number);
@@ -73,6 +107,9 @@ public class GatewayLocation {
 	               .entity(builder.toString())
 	               .header("Access-Control-Allow-Origin", "*")
 	               .build();
-		
+/*		}
+		return Response.serverError()
+				.header("Access-Control-Allow-Origin", "*")
+	            .build();  */
 	  }
 }

@@ -26,6 +26,11 @@ public class GatewayUsers {
 	@Produces(MediaType.TEXT_PLAIN)
 	  public Response getUsers() 
 	  {
+	/*	String[] arrOfStr = token.split(" "); 
+	 * @HeaderParam("Authorization") String token
+		LoginStore loginstore = LoginStore.getInstance(); 
+		if ((loginstore.findUser(arrOfStr[1])) != false)
+		{ */
 		ServerUsers request = new ServerUsers();
 		List<User> list1 = request.getUser();
 		StringBuilder builder = new StringBuilder();
@@ -49,11 +54,15 @@ public class GatewayUsers {
 	               .entity(builder.toString())
 	               .header("Access-Control-Allow-Origin", "*")
 	               .build();
+	/*	}
+		return Response.serverError()
+				.header("Access-Control-Allow-Origin", "*")
+	            .build();  */
 	  }
 	
 	@Path("/Login")
 	@OPTIONS
-	public Response corsHandler(@HeaderParam("Access-Control-Request-Headers") String requestH) {
+	public Response corsHandlerLogin(@HeaderParam("Access-Control-Request-Headers") String requestH) {
 	    ResponseBuilder rb = Response.ok();
 	    return rb
 	             .header("Access-Control-Allow-Origin", "*")
@@ -61,11 +70,26 @@ public class GatewayUsers {
 	             .header("Access-Control-Allow-Methods", "GET,POST,OPTIONS")
 	    		 .build();
 	}
+	
+	@OPTIONS
+	public Response corsHandler(@HeaderParam("Access-Control-Request-Headers") String requestH) {
+	    ResponseBuilder rb = Response.ok();
+	    return rb
+	             .header("Access-Control-Allow-Origin", "*")
+	             .header("Access-Control-Allow-Headers", "content-type, authorization")
+	             .header("Access-Control-Allow-Methods", "GET,POST,OPTIONS")
+	    		 .build();
+	}
+	  
 	  
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response createUser(String incomingData) throws JSONException, ParseException
+	public Response createUser(String incomingData, @HeaderParam("Authorization") String token) throws JSONException, ParseException
 	{
+		String[] arrOfStr = token.split(" "); 
+		LoginStore loginstore = LoginStore.getInstance(); 
+		if ((loginstore.findUser(arrOfStr[1])) != false)
+		{
     	String json = incomingData;
         JSONObject obj = new JSONObject(json);
         String username = obj.getString("username");
@@ -90,7 +114,10 @@ public class GatewayUsers {
 	               .header("Access-Control-Allow-Origin", "*")
 	               .build();
 		
-		
+		}
+		return Response.serverError()
+				.header("Access-Control-Allow-Origin", "*")
+	            .build();
 	 } 
 	
 

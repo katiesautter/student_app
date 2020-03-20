@@ -8,7 +8,7 @@
 
 </div>
 
-<h3>Posts:</h3> 
+<h3>Messages:</h3> 
 
 <ul>
     <li *ngFor="let post of posts">
@@ -23,13 +23,12 @@
 <form>
     <h3>  </h3>
     <h3>  </h3>
-    <h3 style = "color:purple">Post about this discussion:</h3> 
+    <h3 style = "color:purple">Respond to discussion:</h3> 
     <h3></h3>
-    <h4> Write a post message:</h4>
     <h3></h3>
     <textarea type="text" [(ngModel)]='postInfo' name="postInfo" placeholder="Type something here...."></textarea>
     <h3></h3>
-    <button class="button" type="submit" (click)="onSubmit()" >Create Post</button>
+    <button class="button" type="submit" (click)="onSubmit()" >Create Message</button>
 
     
 </form>

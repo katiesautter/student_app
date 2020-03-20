@@ -9,6 +9,8 @@ import { LoginComponent } from './login/login.component';
 import { DiscussionDetailsComponent } from './discussion-details/discussion-details.component';
 import { UserComponent } from './user/user.component';
 import { MapComponent } from './map/map.component';
+import { AddUsersComponent } from './add-users/add-users.component';
+
 
 
 const routes: Routes = [
@@ -64,6 +66,13 @@ const routes: Routes = [
     component: UserComponent,
     data: { title: 'user' }
   }, 
+
+  {
+    path: 'adduser',
+    component: AddUsersComponent,
+    data: { title: 'adduser' }
+  }, 
+
 
   {
     path: 'map',

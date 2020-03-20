@@ -26,22 +26,30 @@ import java.util.List;
 public class GatewayPosts {
 	@GET
 	@Produces(MediaType.TEXT_PLAIN)
-	  public Response getPublicPosts() 
+	  public Response getPublicPosts(@HeaderParam("Authorization") String token) 
 	  {
+	/*	String[] arrOfStr = token.split(" "); 
+		LoginStore loginstore = LoginStore.getInstance(); 
+		if ((loginstore.findUser(arrOfStr[1])) != false)
+		{  */
 		ServerPosts request = new ServerPosts();
-		//return request.getPosts().toString();
+		
 		return Response.ok()
 	               .entity(request.getPosts().toString())
 	               .header("Access-Control-Allow-Origin", "*")
 	               .build();
-	  } 
+	/*	}
+		return Response.serverError()
+				.header("Access-Control-Allow-Origin", "*")
+	            .build();  */
+	  }  
 	
 	@OPTIONS
 	public Response corsHandler(@HeaderParam("Access-Control-Request-Headers") String requestH) {
 	    ResponseBuilder rb = Response.ok();
 	    return rb
 	             .header("Access-Control-Allow-Origin", "*")
-	             .header("Access-Control-Allow-Headers", "content-type")
+	             .header("Access-Control-Allow-Headers", "content-type, authorization")
 	             .header("Access-Control-Allow-Methods", "GET,POST,OPTIONS")
 	    		 .build();
 	}
@@ -49,8 +57,12 @@ public class GatewayPosts {
 	
 		@POST
 		@Consumes(MediaType.APPLICATION_JSON)
-		public Response createPost(String incomingData) throws JSONException, ParseException
+		public Response createPost(String incomingData, @HeaderParam("Authorization") String token) throws JSONException, ParseException
 		{
+			String[] arrOfStr = token.split(" "); 
+			LoginStore loginstore = LoginStore.getInstance(); 
+			if ((loginstore.findUser(arrOfStr[1])) != false)
+			{
 	    	String json = incomingData;
 	        JSONObject obj = new JSONObject(json);
 	        
@@ -80,16 +92,15 @@ public class GatewayPosts {
 	        builder.append(newPost.toJSON());
 	        System.out.println(newPost.toJSON());
 	        
-			//System.out.println("Event Information: " +incomingData.toString());
-			//return Response.status(200)
-				//	.entity(newPost.toJSON())
-					//.build();	
 			return Response.ok()
 		               .entity(builder.toString())
 		               .header("Access-Control-Allow-Origin", "*")
 		               .build();
-			
-			
+			}
+
+			return Response.serverError()
+					.header("Access-Control-Allow-Origin", "*")
+		            .build();
 		 } 
 	
 	

@@ -31,12 +31,19 @@ class LoginTest {
 		
 		String userJson = "{\"username\":\"jamata\",\"password\": \"lilHoze\"}\n"
 				+ "";
+		
+		String userJson2 = "{\"username\":\"blah\",\"password\": \"hurray\"}\n"
+				+ "";
+		
+		
 		GatewayUsers getUser = new GatewayUsers();
 		Response login = getUser.login(userJson);
 		System.out.println(login);
 		assertTrue(login != null);
 		store.display();
 		
+		//testing that token being passed
+		//getUser.createUser(userJson2);
 	}
 
 }

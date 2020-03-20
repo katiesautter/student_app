@@ -34,8 +34,12 @@ import org.ksautter.sea.server.ServerUsers;
 public class GatewayEvents {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	  public Response getPublicEvents() 
+	  public Response getPublicEvents(@HeaderParam("Authorization") String token) 
 	  {
+		/*String[] arrOfStr = token.split(" "); 
+		LoginStore loginstore = LoginStore.getInstance(); 
+		if ((loginstore.findUser(arrOfStr[1])) != false)
+		{ */
 		ServerEvents request = new ServerEvents();
 		List<Event> list1 = request.publicEvents();
 		StringBuilder builder = new StringBuilder();
@@ -59,14 +63,22 @@ public class GatewayEvents {
 	               .entity(builder.toString())
 	               .header("Access-Control-Allow-Origin", "*")
 	               .build();
+	/*  }
+		return Response.serverError()
+				.header("Access-Control-Allow-Origin", "*")
+	            .build(); */
 	  }
+
 	
 	@Path("/Private")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	  public Response getPrivateEvents() 
+	  public Response getPrivateEvents(@HeaderParam("Authorization") String token) 
 	  {
+		/*String[] arrOfStr = token.split(" "); 
 		LoginStore loginstore = LoginStore.getInstance(); 
+		if ((loginstore.findUser(arrOfStr[1])) != false)
+		{	 */
 		ServerEvents request = new ServerEvents();
 		List<Event> list1 = request.privateEvents();
 		StringBuilder builder = new StringBuilder();
@@ -90,13 +102,21 @@ public class GatewayEvents {
 	               .entity(builder.toString())
 	               .header("Access-Control-Allow-Origin", "*")
 	               .build();
+	/*  }
+		return Response.serverError()
+				.header("Access-Control-Allow-Origin", "*")
+	            .build();  */
 	  }
 	
 	@Path("{id}")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	  public Response getEventPosts(@PathParam("id") String id) 
+	  public Response getEventPosts(@PathParam("id") String id, @HeaderParam("Authorization") String token) 
 	  {
+	/*	String[] arrOfStr = token.split(" "); 
+		LoginStore loginstore = LoginStore.getInstance(); 
+		if ((loginstore.findUser(arrOfStr[1])) != false)
+		{  */
 		int number = Integer.parseInt(id);
 		ServerEvents request = new ServerEvents();
 		ServerUsers userRequest = new ServerUsers();
@@ -138,8 +158,22 @@ public class GatewayEvents {
 	               .header("Access-Control-Allow-Origin", "*")
 	               .build();
 		
+	/*	}
+		return Response.serverError()
+				.header("Access-Control-Allow-Origin", "*")
+	            .build();  */
 	  }
 	
+	@Path("{id}")
+	@OPTIONS
+	public Response corsHandlerID(@HeaderParam("Access-Control-Request-Headers") String requestH) {
+	    ResponseBuilder rb = Response.ok();
+	    return rb
+	             .header("Access-Control-Allow-Origin", "*")
+	             .header("Access-Control-Allow-Headers", "content-type, authorization")
+	             .header("Access-Control-Allow-Methods", "GET,POST,OPTIONS")
+	    		 .build();
+	}
 	
 	@OPTIONS
 	public Response corsHandler(@HeaderParam("Access-Control-Request-Headers") String requestH) {
@@ -151,14 +185,29 @@ public class GatewayEvents {
 	    		 .build();
 	}
 	
+	
+	@Path("/Private")
+	@OPTIONS
+	public Response corsHandlerPrivate(@HeaderParam("Access-Control-Request-Headers") String requestH) {
+	    ResponseBuilder rb = Response.ok();
+	    return rb
+	             .header("Access-Control-Allow-Origin", "*")
+	             .header("Access-Control-Allow-Headers", "content-type, authorization")
+	             .header("Access-Control-Allow-Methods", "GET,POST,OPTIONS")
+	    		 .build();
+	}
+	
     @POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response createEvent(String incomingData) throws JSONException, ParseException
+	public Response createEvent(String incomingData, @HeaderParam("Authorization") String token) throws JSONException, ParseException
 	{
+
+		String[] arrOfStr = token.split(" "); 
+		LoginStore loginstore = LoginStore.getInstance(); 
+		if ((loginstore.findUser(arrOfStr[1])) != false)
+		{ 
     	String json = incomingData;
         JSONObject obj = new JSONObject(json);
-        
-       
         String title = obj.getString("title");
         System.out.println(title);
         String status = obj.getString("status");
@@ -194,7 +243,10 @@ public class GatewayEvents {
 	               .header("Access-Control-Allow-Origin", "*")
 	               .build();
 		
-		
-	 } 
+		}
+		return Response.serverError()
+				.header("Access-Control-Allow-Origin", "*")
+	            .build(); 
+	 }  
 	
 }
