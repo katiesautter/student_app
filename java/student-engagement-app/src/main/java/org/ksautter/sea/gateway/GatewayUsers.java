@@ -52,7 +52,7 @@ public class GatewayUsers {
 		//return builder.toString();
 		return Response.ok()
 	               .entity(builder.toString())
-	               .header("Access-Control-Allow-Origin", "*")
+	             //  .header("Access-Control-Allow-Origin", "*")
 	               .build();
 	/*	}
 		return Response.serverError()
@@ -60,26 +60,6 @@ public class GatewayUsers {
 	            .build();  */
 	  }
 	
-	@Path("/Login")
-	@OPTIONS
-	public Response corsHandlerLogin(@HeaderParam("Access-Control-Request-Headers") String requestH) {
-	    ResponseBuilder rb = Response.ok();
-	    return rb
-	             .header("Access-Control-Allow-Origin", "*")
-	             .header("Access-Control-Allow-Headers", "content-type")
-	             .header("Access-Control-Allow-Methods", "GET,POST,OPTIONS")
-	    		 .build();
-	}
-	
-	@OPTIONS
-	public Response corsHandler(@HeaderParam("Access-Control-Request-Headers") String requestH) {
-	    ResponseBuilder rb = Response.ok();
-	    return rb
-	             .header("Access-Control-Allow-Origin", "*")
-	             .header("Access-Control-Allow-Headers", "content-type, authorization")
-	             .header("Access-Control-Allow-Methods", "GET,POST,OPTIONS")
-	    		 .build();
-	}
 	  
 	  
 	@POST
@@ -111,12 +91,12 @@ public class GatewayUsers {
 			//	.build();	
 		return Response.ok()
 	               .entity(newUser.toJSON())
-	               .header("Access-Control-Allow-Origin", "*")
+	             //  .header("Access-Control-Allow-Origin", "*")
 	               .build();
 		
 		}
 		return Response.serverError()
-				.header("Access-Control-Allow-Origin", "*")
+			//	.header("Access-Control-Allow-Origin", "*")
 	            .build();
 	 } 
 	
@@ -152,9 +132,9 @@ public class GatewayUsers {
 		
 		return Response.ok()
 	               .entity(token)
-	               .header("Access-Control-Allow-Origin", "*")
-	               .header("Access-Control-Allow-Headers", "content-type")
-		           .header("Access-Control-Allow-Methods", "GET,POST,OPTIONS")
+	            //   .header("Access-Control-Allow-Origin", "*")
+	             //  .header("Access-Control-Allow-Headers", "content-type")
+		         //  .header("Access-Control-Allow-Methods", "GET,POST,OPTIONS")
 	               .build();
 		
 	}

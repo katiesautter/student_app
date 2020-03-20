@@ -36,23 +36,13 @@ public class GatewayPosts {
 		
 		return Response.ok()
 	               .entity(request.getPosts().toString())
-	               .header("Access-Control-Allow-Origin", "*")
+	            //   .header("Access-Control-Allow-Origin", "*")
 	               .build();
 	/*	}
 		return Response.serverError()
 				.header("Access-Control-Allow-Origin", "*")
 	            .build();  */
 	  }  
-	
-	@OPTIONS
-	public Response corsHandler(@HeaderParam("Access-Control-Request-Headers") String requestH) {
-	    ResponseBuilder rb = Response.ok();
-	    return rb
-	             .header("Access-Control-Allow-Origin", "*")
-	             .header("Access-Control-Allow-Headers", "content-type, authorization")
-	             .header("Access-Control-Allow-Methods", "GET,POST,OPTIONS")
-	    		 .build();
-	}
 	
 	
 		@POST
@@ -94,12 +84,12 @@ public class GatewayPosts {
 	        
 			return Response.ok()
 		               .entity(builder.toString())
-		               .header("Access-Control-Allow-Origin", "*")
+		          //     .header("Access-Control-Allow-Origin", "*")
 		               .build();
 			}
 
 			return Response.serverError()
-					.header("Access-Control-Allow-Origin", "*")
+				//	.header("Access-Control-Allow-Origin", "*")
 		            .build();
 		 } 
 	

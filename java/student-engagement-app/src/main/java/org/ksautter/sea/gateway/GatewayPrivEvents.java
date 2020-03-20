@@ -25,11 +25,11 @@ public class GatewayPrivEvents {
 		//return request.privateEvents().toString();
 		return Response.ok()
 	               .entity(request.privateEvents().toString())
-	               .header("Access-Control-Allow-Origin", "*")
+	             //  .header("Access-Control-Allow-Origin", "*")
 	               .build();
 	  }
 		return Response.serverError()
-				.header("Access-Control-Allow-Origin", "*")
+			//r	.header("Access-Control-Allow-Origin", "*")
 	            .build();
 	  }
 

@@ -52,7 +52,7 @@ public class GatewayLocation {
 		//return builder.toString();
 		return Response.ok()
 	               .entity(builder.toString())
-	               .header("Access-Control-Allow-Origin", "*")
+	            //   .header("Access-Control-Allow-Origin", "*")
 	               .build();
 	/*	}
 		return Response.serverError()
@@ -60,26 +60,6 @@ public class GatewayLocation {
 	            .build(); */
 	  }
 	
-	@Path("{id}")
-	@OPTIONS
-	public Response corsHandlerID(@HeaderParam("Access-Control-Request-Headers") String requestH) {
-	    ResponseBuilder rb = Response.ok();
-	    return rb
-	             .header("Access-Control-Allow-Origin", "*")
-	             .header("Access-Control-Allow-Headers", "content-type, authorization")
-	             .header("Access-Control-Allow-Methods", "GET,POST,OPTIONS")
-	    		 .build();
-	}
-	
-	@OPTIONS
-	public Response corsHandler(@HeaderParam("Access-Control-Request-Headers") String requestH) {
-	    ResponseBuilder rb = Response.ok();
-	    return rb
-	             .header("Access-Control-Allow-Origin", "*")
-	             .header("Access-Control-Allow-Headers", "content-type, authorization")
-	             .header("Access-Control-Allow-Methods", "GET,POST,OPTIONS")
-	    		 .build();
-	}
 	
 	@Path("{id}")
 	@GET
@@ -105,7 +85,7 @@ public class GatewayLocation {
 		
 		return Response.ok()
 	               .entity(builder.toString())
-	               .header("Access-Control-Allow-Origin", "*")
+	            //   .header("Access-Control-Allow-Origin", "*")
 	               .build();
 /*		}
 		return Response.serverError()
