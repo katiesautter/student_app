@@ -2,17 +2,37 @@
 <h1>Private Discussions</h1>
 
 
-<ul>
+
     <li *ngFor="let discussion of discussions">
         <nav> 
-            <a [routerLink]="['/discussiondetails', discussion.id]" routerLinkActive="active">{{discussion.title}}</a>          
+            <button class="block" style = "color:white" [routerLink]="['/discussiondetails', discussion.id]" routerLinkActive="active"> {{discussion.title}}</button>
+
+       <!--      <a [routerLink]="['/discussiondetails', discussion.id]" routerLinkActive="active">{{discussion.title}}</a>           -->
         </nav>
         <h3></h3>
         <router-outlet></router-outlet> 
     </li>
-</ul> 
 
 
+
+<style>
+    .block {
+      display: block;
+      width: 17%;
+      border: none;
+      background-color: rgb(76, 155, 175);
+      color: white;
+      padding: 14px 28px;
+      font-size: 16px;
+      cursor: pointer;
+      text-align: center;
+    }
+    
+    .block:hover {
+      background-color: #ddd;
+      color: black;
+    }
+    </style>
 
 <form>
     <h3>  </h3>

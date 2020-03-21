@@ -3,8 +3,10 @@
 <h3></h3>
 <h4> Username:  <input type="text" [(ngModel)]='loginUsername' name="eventTitle" placeholder="Type username here...."></h4>
 <h3></h3>
-<h4> Password:  <input type="text" [(ngModel)]='loginPassword' name="login" placeholder="Type password here...."></h4>
+<h4> Password:  <input type="password" value="" [(ngModel)]='loginPassword' name="login" placeholder="Type password here...." id="myInput"></h4>
 <h3></h3>
+<input type="checkbox" onclick="myFunction()">Show Password
+
 
 <h3></h3>
 <button class="button" type="submit" (click)="onSubmit()" routerLink="/events">LOGIN</button>
@@ -12,3 +14,21 @@
 <h3></h3>
 <button routerLink="/user"> CREATE NEW USER</button>
 
+
+
+<html>
+<body>
+
+<script>
+function myFunction() {
+ // var x = document.getElementById("myInput");
+  if (type === "password") {
+    type = "text";
+  } else {
+    type = "password";
+  }
+}
+</script>
+
+</body>
+</html>

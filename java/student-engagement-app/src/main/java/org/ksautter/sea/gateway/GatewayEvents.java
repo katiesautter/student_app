@@ -170,10 +170,10 @@ public class GatewayEvents {
 	public Response createEvent(String incomingData, @HeaderParam("Authorization") String token) throws JSONException, ParseException
 	{
 
-		String[] arrOfStr = token.split(" "); 
+	/*	String[] arrOfStr = token.split(" "); 
 		LoginStore loginstore = LoginStore.getInstance(); 
 		if ((loginstore.findUser(arrOfStr[1])) != false)
-		{ 
+		{ */
     	String json = incomingData;
         JSONObject obj = new JSONObject(json);
         String title = obj.getString("title");
@@ -211,10 +211,10 @@ public class GatewayEvents {
 	             //  .header("Access-Control-Allow-Origin", "*")
 	               .build();
 		
-		}
+		/*}
 		return Response.serverError()
 				//.header("Access-Control-Allow-Origin", "*")
-	            .build(); 
+	            .build(); */
 	 }  
 	
 }

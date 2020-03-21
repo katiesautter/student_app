@@ -41,9 +41,10 @@ import { AddUsersComponent } from './add-users/add-users.component';
   providers: [
     {
       provide : HTTP_INTERCEPTORS,
-      useClass: SeaService,
+      useClass: SeaService, 
       multi   : true
-    } 
+    }, 
+    SeaService
   ],
   bootstrap: [AppComponent]
 })

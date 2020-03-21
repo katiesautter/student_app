@@ -1,20 +1,34 @@
-<h3>All Public Events:</h3> 
+<h2>All Public Events:</h2> 
 
-<ul>
+
     <li *ngFor="let event of events">
         <nav> 
-            
-             <a [routerLink]="['/eventsdetails', event.id]" routerLinkActive="active">{{event.title}}</a>  
+            <button class="block" style = "color:white" [routerLink]="['/eventsdetails', event.id]" routerLinkActive="active"> {{event.title}}</button>
             
         </nav>
         <h3></h3>
         <router-outlet></router-outlet> 
     </li>
-</ul>
+
+
+<style>
+    .block {
+      display: block;
+      width: 17%;
+      border: none;
+      background-color: rgb(76, 155, 175);
+      color: white;
+      padding: 14px 28px;
+      font-size: 16px;
+      cursor: pointer;
+      text-align: center;
+    }
     
-
-
-
+    .block:hover {
+      background-color: #ddd;
+      color: black;
+    }
+    </style>
 
 <form>
     <h3>  </h3>

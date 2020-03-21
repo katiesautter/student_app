@@ -1,7 +1,7 @@
 
 
 <h2>Select Users</h2>
-<select [(ngModel)]="selectedLevel" (change)="selected()">
+<select>
     <option *ngFor="let user of users" [ngValue]="user">{{user.username}}</option>
 </select>
 <button> Add User </button>
