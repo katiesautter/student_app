@@ -1,13 +1,22 @@
 
 
-<h2>Select Users</h2>
+<h2 style = "color:blue">SELECT USERS</h2> 
+
 <select>
+    <option disabled selected value> -- select an option -- </option>
     <option *ngFor="let user of users" [ngValue]="user">{{user.username}}</option>
 </select>
-<button> Add User </button>
+<button onclick="myFunction()"> Add User </button>
 
 <h3></h3>
 <button routerLink="/discussions"> CREATE DISCUSSION </button>
+
+
+<script>
+    function myFunction() {
+     disable;
+    }
+    </script>
 
 
 

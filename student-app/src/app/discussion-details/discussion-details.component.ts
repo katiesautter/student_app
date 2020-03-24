@@ -17,6 +17,7 @@ export class DiscussionDetailsComponent implements OnInit {
   location = {name: undefined, id: undefined};
   posts = ["No posts for this event"];
   event = {title: undefined, datetime: undefined, locationName: undefined, fk_location: undefined};
+ 
   
   //[{"id":3,"message":"Come support the girls volleyball team!!","user_id":2,"event_id":4},{"id":4,"message":"Volleyball game tonight!!","user_id":2,"event_id":4}];
   
@@ -35,6 +36,7 @@ export class DiscussionDetailsComponent implements OnInit {
           console.log("return from get posts for event");
           this.posts = response.Posts;
           this.event = response.Event;
+          
 
           this.locationid = this.event.fk_location;
         /*        
@@ -106,7 +108,7 @@ export class DiscussionDetailsComponent implements OnInit {
     console.log("creating a new post" + this.postInfo);
     //'11-12-2019 21:08:44'
     //pass headers like authorization
-    this.http.post<any>(this.seaService.restUrl() + "Posts/", { message: this.postInfo, date_time: date_format_str, fk_user_id: '2', fk_events_id: this.id})
+    this.http.post<any>(this.seaService.restUrl() + "Posts/", { message: this.postInfo, date_time: date_format_str, fk_user_id: '3', fk_events_id: this.id})
         .subscribe( response => { 
           console.log("return from get posts for event");
           this.postInfo = response.message;

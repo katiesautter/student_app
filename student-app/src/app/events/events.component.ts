@@ -12,6 +12,7 @@ import { SeaService } from '../sea.service';
 export class EventsComponent implements OnInit {
 
 events = [];
+locations = [];
 eventTitle = " ";
 eventDate = " ";
 eventLocation = " ";
@@ -37,6 +38,20 @@ eventLocation = " ";
         ) 
     console.log("after call to get events"); 
 
+
+
+
+    console.log("about to get locations");
+    this.http.get<any>(this.seaService.restUrl() + "Locations")
+        .subscribe( response => { 
+           this.locations = response.Locations;
+        }, err => {
+          console.log(err.message);
+
+        }, () => {
+          console.log('completed');
+        }
+        ) 
   } 
 
 

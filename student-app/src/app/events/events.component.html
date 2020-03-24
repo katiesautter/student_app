@@ -1,4 +1,5 @@
-<h2>All Public Events:</h2> 
+<h2 style = "color:blue">ALL CAMPUS EVENTS</h2> 
+
 
 
     <li *ngFor="let event of events">
@@ -33,21 +34,20 @@
 <form>
     <h3>  </h3>
     <h3>  </h3>
-    <h3 style = "color:purple">Create a Public Event:</h3> 
+    <h2 style = "color:purple">Create a Public Event:</h2> 
     <h3></h3>
     <h3></h3>
     <h4> Title:  <input type="text" [(ngModel)]='eventTitle' name="eventTitle" placeholder="Type title here...."></h4>
     <h3></h3>
     <h4> Date:  <input type="text" [(ngModel)]='eventDate' name="eventDate" placeholder="Type event date here...."></h4>
     <h3></h3>
-    <h4> Location:  <input type="text" [(ngModel)]='eventLocation' name="eventLocation" ></h4>
-    <h3></h3>
+    <h4> Location: </h4>
+    <select>
+        <option disabled selected value> -- select an option -- </option>
+        <option *ngFor="let location of locations" [ngValue]="location">{{location.name}}</option>
+    </select>    <h3></h3>
 
-    <button class="button" type="submit" (click)="onSubmit()" >Create Event</button>
+    <button style = "color:blue" class="button" type="submit" (click)="onSubmit()" >Create Event</button>
 
-    
 </form>
-
-
-
 

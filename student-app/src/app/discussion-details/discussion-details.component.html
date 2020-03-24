@@ -1,21 +1,23 @@
 <div> 
-    <h2 style = "color:blue">{{event.title}}:</h2> 
-    <h5>Date of event: {{event.datetime}}</h5> 
-    <h5>Location: <a [routerLink]="['/locationsdetails', location.id]" routerLinkActive="active">{{location.name}}</a>  
-    </h5> 
+    <h1 style = "color:blue">{{event.title}}:</h1> 
+    <h4>Date: {{event.datetime | date}} </h4> 
+    <h4>Time: {{event.datetime | date:'shortTime' }} </h4> 
+    <h4>Location: <button [routerLink]="['/locationsdetails', location.id]" routerLinkActive="active">{{location.name}}</button> 
+
+    </h4> 
 
 
 
 </div>
 
-<h3>Messages:</h3> 
+<h1>Messages:</h1> 
 
 <ul>
     <li *ngFor="let post of posts">
-        <h4>{{post.message}}</h4> 
+        <h4 style = "color:blue">{{post.message}}</h4> 
          <span> Posted by: {{post.username}} </span>
          <h3></h3>
-         <span> Posted at: {{post.datetime}} </span>
+         <span> Posted at: {{post.datetime | date:'medium' }} </span>
         
         
     </li>
