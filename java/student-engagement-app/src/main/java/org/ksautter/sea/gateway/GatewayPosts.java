@@ -10,7 +10,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.ksautter.sea.model.Event;
 import org.ksautter.sea.model.Post;
+import org.ksautter.sea.model.User;
 import org.ksautter.sea.server.ServerPosts;
+import org.ksautter.sea.server.ServerUsers;
+
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -69,7 +72,7 @@ public class GatewayPosts {
 	        int events = Integer.parseInt(fk_events);
 	        SimpleDateFormat timestamp = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
 	        Date newDate = timestamp.parse(date_time);
-	        
+	        ServerUsers userRequest = new ServerUsers();
 	        
 	        Post newPost = new Post();
 	        newPost.setMsg(message);
@@ -79,8 +82,18 @@ public class GatewayPosts {
 	        newPost.save();
 	       
 	        StringBuilder builder = new StringBuilder();
-	        builder.append(newPost.toJSON());
-	        System.out.println(newPost.toJSON());
+	        int userID = newPost.getFkuser();
+	        User username = userRequest.getUsername(userID);
+	        builder.append("{");
+	        builder.append("\"Post\":");
+			builder.append(newPost.postsToJSON1());
+			builder.append(username.usernameToJSON());
+			builder.append(newPost.postsToJSON2());
+			builder.append("}");
+	        
+	     //   StringBuilder builder = new StringBuilder();
+	     //   builder.append(newPost.toJSON());
+	     //   System.out.println(newPost.toJSON());
 	        
 			return Response.ok()
 		               .entity(builder.toString())

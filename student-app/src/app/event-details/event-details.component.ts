@@ -89,19 +89,18 @@ export class EventDetailsComponent implements OnInit {
           console.log("return from get posts for event");
           this.postInfo = response.message;
           this.id = response.fk_events_id;
-          //date_format_str = response.datetime;
-        
+          this.posts.push(response.Post);
+
         }, err => {
           console.log(err.message);
 
         }, () => {
           console.log('completed');
-          window.location.reload();   
+         // window.location.reload();   
           console.log(date_format_str);
-          //console.log(d);
+         
         }
         )
-        //console.log(date_format_str);
        
   }
   

@@ -173,7 +173,7 @@ public class GatewayEvents {
 		String[] arrOfStr = token.split(" "); 
 		LoginStore loginstore = LoginStore.getInstance(); 
 		if ((loginstore.findUser(arrOfStr[1])) != false)
-		{ 
+		{  
     	String json = incomingData;
         JSONObject obj = new JSONObject(json);
         String title = obj.getString("title");

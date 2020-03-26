@@ -1,7 +1,7 @@
-<h2 style = "color:blue">ALL CAMPUS EVENTS</h2> 
-
-
-
+<!--  <h2 style = "color:blue">All Campus Events</h2>  -->
+<h3></h3>
+<img src="assets/e.jpeg" style='max-width: 300px'> 
+<h3></h3>
     <li *ngFor="let event of events">
         <nav> 
             <button class="block" style = "color:white" [routerLink]="['/eventsdetails', event.id]" routerLinkActive="active"> {{event.title}}</button>
@@ -34,7 +34,8 @@
 <form>
     <h3>  </h3>
     <h3>  </h3>
-    <h2 style = "color:purple">Create a Public Event:</h2> 
+    <h3>  </h3>
+    <h2 style = "color:blue">Create a Public Event:</h2> 
     <h3></h3>
     <h3></h3>
     <h4> Title:  <input type="text" [(ngModel)]='eventTitle' name="eventTitle" placeholder="Type title here...."></h4>
