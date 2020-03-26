@@ -41,7 +41,13 @@ export class SeaService  implements HttpInterceptor{
   }
 
 
-    
+  loggedIn()
+  {
+    if (this.token === undefined )
+      return false;
+    else
+      return true;
+  } 
 
   
 }
