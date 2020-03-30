@@ -1,9 +1,13 @@
+<h3></h3>
+<img src="assets/dis.jpeg" style='max-width: 250px'> 
 
-<h2 style = "color:blue">Private Discussions </h2>  
+<h2 *ngIf="!seaService.loggedIn()">
+    <h5>Log in to view your discussions</h5>
+</h2>
 
-<img src="assets/discussion.jpeg" style='max-width: 200px'> 
 
 
+<h3 *ngIf="seaService.loggedIn()">
     <li *ngFor="let discussion of discussions">
         <nav> 
             <button class="block" style = "color:white" [routerLink]="['/discussiondetails', discussion.id]" routerLinkActive="active"> {{discussion.title}}</button>
@@ -13,7 +17,7 @@
         <h3></h3>
         <router-outlet></router-outlet> 
     </li>
-
+</h3>
 
 
 <style>

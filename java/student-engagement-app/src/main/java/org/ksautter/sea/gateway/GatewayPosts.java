@@ -20,6 +20,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
 
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -61,8 +62,8 @@ public class GatewayPosts {
 	        
 	        String message = obj.getString("message");
 	        System.out.println(message);
-	        String date_time = obj.getString("date_time");
-	        System.out.println(date_time);
+	        //String date_time = obj.getString("date_time");
+	        //System.out.println(date_time);
 	        String fk_user = obj.getString("fk_user_id");
 	        System.out.println(fk_user);
 	        String fk_events = obj.getString("fk_events_id");
@@ -71,12 +72,15 @@ public class GatewayPosts {
 	        int user = Integer.parseInt(fk_user);
 	        int events = Integer.parseInt(fk_events);
 	        SimpleDateFormat timestamp = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
-	        Date newDate = timestamp.parse(date_time);
+	        
+	        Timestamp timestamp2 = new Timestamp(System.currentTimeMillis());
+	        
+	       // Date newDate = timestamp.parse(date_time);
 	        ServerUsers userRequest = new ServerUsers();
 	        
 	        Post newPost = new Post();
 	        newPost.setMsg(message);
-	        newPost.setDate(newDate);
+	        newPost.setDate(timestamp2);
 	        newPost.setFkuser(user);
 	        newPost.setFkevents(events);
 	        newPost.save();

@@ -64,14 +64,15 @@ public class GatewayTest extends TestCase {
 		
 	}
 
-	/*public void testEvents() throws JSONException, ParseException {
+	public void testEvents() throws JSONException, ParseException {
 		
 		//gets public events from database
+		String token = null;
 		GatewayEvents getPublic = new GatewayEvents();
-		Response eventsJson = getPublic.getPublicEvents();
+		Response eventsJson = getPublic.getPublicEvents(token);
 		System.out.println(eventsJson);
 		assertTrue(eventsJson != null);
-		//assertTrue(eventsJson.getLength() > 5);
+		assertTrue(eventsJson.getLength() > 5);
 		//assertTrue(eventsJson.contains("Game Night"));
 		
 		//testing JSON for all public events
@@ -84,10 +85,10 @@ public class GatewayTest extends TestCase {
 		}
 		
 		GatewayEvents getPrivate = new GatewayEvents();
-		Response privEventsJson = getPrivate.getPrivateEvents();
+		Response privEventsJson = getPrivate.getPrivateEvents(token);
 		System.out.println(privEventsJson);
 		assertTrue(privEventsJson != null);
-		//assertTrue(eventsJson.getLength() > 5);
+		assertTrue(eventsJson.getLength() > 5);
 		//assertTrue(eventsJson.contains("Game Night"));
 		
 		//testing JSON for all public events
@@ -102,7 +103,7 @@ public class GatewayTest extends TestCase {
 		//getting posts for a specific event from database
 		String id = "4";
 		GatewayEvents gatewayEvents = new GatewayEvents();
-		Response eventPostsJson = gatewayEvents.getEventPosts(id);
+		Response eventPostsJson = gatewayEvents.getEventPosts(id, token);
 		System.out.println(eventPostsJson.getEntity().toString());
 		assertTrue(eventPostsJson != null);
 		//assertTrue(eventPostsJson.getLength() > 5);
@@ -122,7 +123,7 @@ public class GatewayTest extends TestCase {
 		String eventJson = "{\"title\":\" bball!\",\"status\":\"public\",\"date_time\": \"11-12-2019 21:08:44\", \"location_id\": 5}\n"
 				+ "";
 		GatewayEvents gatewayEvents2 = new GatewayEvents();
-		Response response = gatewayEvents2.createEvent(eventJson);
+		Response response = gatewayEvents2.createEvent(eventJson, token);
 		System.out.println("RESPONSE: " + response);
 		assertTrue(response != null);
 		String event = response.getEntity().toString();
@@ -138,14 +139,15 @@ public class GatewayTest extends TestCase {
 		
 	}
 
-/*	
+	
 	public void testPosts() throws JSONException, ParseException {
 	
 		//creating a post and adding to the database 
+		String token = null;
 		String postJson = "{\"message\":\"Come to girls bball!\",\"date_time\": \"11-12-2019 21:08:44\",\"fk_user_id\": 4,\"fk_events_id\": 3}\n"
 				+ "";
 		GatewayPosts posts = new GatewayPosts();
-		Response response = posts.createPost(postJson);
+		Response response = posts.createPost(postJson, token);
 		System.out.println("RESPONSE: " + response);
 		assertTrue(response != null);
 		String post = response.getEntity().toString();
@@ -161,8 +163,9 @@ public class GatewayTest extends TestCase {
 	public void testLocations1() throws JSONException
 	{
 		//getting all locations from database 
+		String token = null;
 		GatewayLocation locations = new GatewayLocation();
-		Response locationsJson = locations.getAllLocations();
+		Response locationsJson = locations.getAllLocations(token);
 		System.out.println("ALL LOCATIONS" + locationsJson);
 		
 		//testing JSON for all locations
@@ -200,7 +203,8 @@ public class GatewayTest extends TestCase {
 	
 	public void testUsers() throws JSONException, ParseException
 	{
-		//gets users from database
+				//gets users from database
+				String token = null;
 				GatewayUsers users = new GatewayUsers();
 				Response usersJson = users.getUsers();
 				System.out.println(usersJson);
@@ -221,7 +225,7 @@ public class GatewayTest extends TestCase {
 				String userJson = "{\"username\":\"suudufis\",\"password\":\"cannon7\"}\n"
 						+ "";
 				GatewayUsers user2 = new GatewayUsers();
-				Response response = user2.createUser(userJson);
+				Response response = user2.createUser(userJson, token);
 				System.out.println("RESPONSE: " + response);
 				assertTrue(response != null);
 				String user = response.getEntity().toString();
@@ -236,8 +240,9 @@ public class GatewayTest extends TestCase {
 	public void testLocations() throws JSONException
 	{
 		//getting all locations from database 
+		String token = null;
 		GatewayLocation locations = new GatewayLocation();
-		Response locationsJson = locations.getAllLocations();
+		Response locationsJson = locations.getAllLocations(token);
 		System.out.println("ALL LOCATIONS" + locationsJson);
 		
 		//testing JSON for all locations
@@ -249,7 +254,7 @@ public class GatewayTest extends TestCase {
 			System.out.println("JSON for locations is working successfully");
 			}
 		String id = "4";
-		Response eventPostsJson = locations.getLocation(id);
+		Response eventPostsJson = locations.getLocation(id, token);
 		System.out.println(eventPostsJson.getEntity().toString());
-	}*/
+	}
 }  

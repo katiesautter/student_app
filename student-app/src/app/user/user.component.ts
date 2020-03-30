@@ -9,8 +9,8 @@ import { SeaService } from '../sea.service';
 })
 export class UserComponent implements OnInit {
   events = [];
-  username = " ";
-  password = " ";
+  username = "";
+  password = "";
 
   constructor(
     private http: HttpClient, private seaService: SeaService
@@ -22,8 +22,6 @@ export class UserComponent implements OnInit {
   onSubmit() 
   {
 
-    //console.log("creating a new user" + this.);
-    //'11-12-2019 21:08:44'
     this.http.post<any>(this.seaService.restUrl() + "Users/", { username: this.username, password: this.password})
         .subscribe( response => { 
           this.username = response.username;

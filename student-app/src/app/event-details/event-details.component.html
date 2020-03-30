@@ -1,5 +1,21 @@
 <div> 
     <h1 style = "color:rgb(38, 0, 255)">{{event.title}}!</h1> 
+    <h2 *ngIf= "event.id == 2">
+
+        <img src="assets/vball.jpeg" style='max-width: 400px'> 
+    </h2>
+    <h2 *ngIf= "event.id == 1">
+
+        <img src="assets/game.jpeg" style='max-width: 400px'> 
+    </h2>
+    <h2 *ngIf= "event.id == 6">
+
+        <img src="assets/kar.jpg" style='max-width: 400px'> 
+    </h2>
+    <h2 *ngIf= "event.id == 7">
+
+        <img src="assets/inter.jpg" style='max-width: 200px'> 
+    </h2>
     <h4>Date: {{event.datetime | date}} </h4> 
     <h4>Time: {{event.datetime | date:'shortTime' }} </h4> 
     <h4>Location: <button [routerLink]="['/locationsdetails', location.id]" routerLinkActive="active">{{location.name}}</button>      
@@ -10,6 +26,7 @@
 <h1>Posts:</h1> 
 
 
+<ul>
     <li *ngFor="let post of posts">
         <h5>
         <h2 style = "color:rgb(38, 0, 255)"> {{post.message}}</h2> 
@@ -19,6 +36,7 @@
         </h5>
         
     </li>
+</ul>
 
 <form *ngIf="seaService.loggedIn()">
     <h3>  </h3>

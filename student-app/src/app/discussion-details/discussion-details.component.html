@@ -1,5 +1,9 @@
 <div> 
     <h1 style = "color:blue">{{event.title}}:</h1> 
+    <h2 *ngIf= "event.id == 3">
+
+        <img src="assets/base.png" style='max-width: 200px'> 
+    </h2>
     <h4>Date: {{event.datetime | date}} </h4> 
     <h4>Time: {{event.datetime | date:'shortTime' }} </h4> 
     <h4>Location: <button [routerLink]="['/locationsdetails', location.id]" routerLinkActive="active">{{location.name}}</button> 

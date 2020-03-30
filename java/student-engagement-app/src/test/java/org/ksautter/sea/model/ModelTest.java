@@ -70,22 +70,6 @@ public class ModelTest extends TestCase {
 		Session session = sf.openSession();
 		session.beginTransaction();
 
-		/*
-		 * User adduser = new User(); adduser.setUsername("sue12345");
-		 * adduser.setPassword("sueypigeon"); session.save(adduser);
-		 * session.getTransaction().commit();
-		 * 
-		 * //assertEquals("sue1234", adduser.getUsername());
-		 * 
-		 * /* session.beginTransaction(); Query query =
-		 * session.createQuery("SELECT username FROM users WHERE username=?3");
-		 * query.setParameter(3, "sue1234");session.getTransaction().commit();
-		 * assertEquals("sue1234", adduser.getUsername()); User user =
-		 * session.get(User.class, 3); assertTrue(user != null); assertEquals(
-		 * user.getUsername(), "sue1234"); session.delete(adduser);
-		 * session.getTransaction().commit(); // HibernateUtil.shutdown();
-		 */
-
 		User user1 = session.get(User.class, 1);
 		assertTrue(user1 != null);
 		assertEquals(user1.getId(), 1);
@@ -96,18 +80,11 @@ public class ModelTest extends TestCase {
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		session.beginTransaction();
-
-		// Location locations = new Location();
-		// locations.setName("Bridge");
-		// session.save(locations);
-
 		Location location1 = session.get(Location.class, 1);
 		assertTrue(location1 != null);
 		assertEquals(location1.getId(), 1);
 		assertEquals(location1.getName(), "Shrader");
 
-		// session.delete(locations);
-		// session.getTransaction().commit();
 	}
 
 	public void testPosts() throws ParseException {
@@ -147,22 +124,6 @@ public class ModelTest extends TestCase {
 		List<Post> list = event.getPosts();
 		assertTrue(list.size() > 1);
 
-		/*
-		 * SessionFactory sf = HibernateUtil.getSessionFactory(); Session session =
-		 * sf.openSession(); session.beginTransaction();
-		 * 
-		 * Event events = new Event(); events.setTitle("Free Coffee!!");
-		 * events.setStatus("public"); events.setDate(new java.util.Date());
-		 * events.setFkloc(4); session.save(events); session.getTransaction().commit();
-		 */
-
-		// Location location1 = session.get(Location.class, 1);
-		// assertTrue(location1 != null);
-		// assertEquals( location1.getId(), 1);
-		// assertEquals( location1.getName(), "Shrader");
-
-		// session.delete(locations);
-		// session.getTransaction().commit();
 	}
 
 	public void testPrivateUsers() {
@@ -181,8 +142,6 @@ public class ModelTest extends TestCase {
 		assertTrue(privuser2 != null);
 		assertEquals(privuser2.getFkevent(), 5);
 
-		// session.delete(privuser);
-		// session.getTransaction().commit();
 	}
 
 }

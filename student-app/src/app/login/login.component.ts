@@ -11,8 +11,8 @@ import { SeaService } from '../sea.service';
 export class LoginComponent implements OnInit {
 
   id: String;
-  loginUsername = " ";
-  loginPassword = " ";
+  loginUsername = "";
+  loginPassword = "";
 
   constructor(private route: ActivatedRoute, private http: HttpClient, private seaService: SeaService) { }
   
@@ -37,5 +37,10 @@ export class LoginComponent implements OnInit {
     //  window.location.reload();   
     }
     )
+  }
+
+  onSubmit2()
+  {
+    window.location.reload(); 
   }
 }

@@ -81,19 +81,6 @@ extends TestCase
         
     }
     
-  /*  public void testPrivUsers() 
-    {
-    	SessionFactory sf = HibernateUtil.getSessionFactory();
-        Session session = sf.openSession();
-        session.beginTransaction();
-        
-        ServerPrivEvents getEvents = new ServerPrivEvents();
-        List<PrivateEventUser> list = getEvents.privateEvents();
-        assertTrue(list.size() > 2);
-        
-    	
-    } */
-    
     public void testUsers() 
     {
     	SessionFactory sf = HibernateUtil.getSessionFactory();

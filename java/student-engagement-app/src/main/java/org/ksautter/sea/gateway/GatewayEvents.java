@@ -36,10 +36,6 @@ public class GatewayEvents {
 	@Produces(MediaType.APPLICATION_JSON)
 	  public Response getPublicEvents(@HeaderParam("Authorization") String token) 
 	  {
-		/*String[] arrOfStr = token.split(" "); 
-		LoginStore loginstore = LoginStore.getInstance(); 
-		if ((loginstore.findUser(arrOfStr[1])) != false)
-		{ */
 		ServerEvents request = new ServerEvents();
 		List<Event> list1 = request.publicEvents();
 		StringBuilder builder = new StringBuilder();
@@ -200,7 +196,10 @@ public class GatewayEvents {
         newEvent.save();
        
         StringBuilder builder = new StringBuilder();
+        builder.append("{");
+        builder.append("\"Event\":");
         builder.append(newEvent.toJSON());
+        builder.append("}");
         System.out.println(newEvent.toJSON());
         
 		//System.out.println("Event Information: " +incomingData.toString());
