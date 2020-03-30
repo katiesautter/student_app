@@ -18,12 +18,14 @@
 
 <ul>
     <li *ngFor="let post of posts">
-        <h4 style = "color:blue">{{post.message}}</h4> 
-         <span> Posted by: {{post.username}} </span>
-         <h3></h3>
-         <span> Posted at: {{post.datetime | date:'medium' }} </span>
-        
-        
+
+        <h5>
+            <h2 style = "color:rgb(38, 0, 255)"> {{post.message}}</h2> 
+             <span> Posted by: {{post.username}} </span>
+             <h3></h3>
+             <span> Posted at: {{post.datetime | date:'medium'}} </span>
+            </h5>
+
     </li>
 </ul> 
 <form *ngIf="seaService.loggedIn()">
