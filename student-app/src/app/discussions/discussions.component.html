@@ -49,9 +49,9 @@
     <h4> Enter Date:  <input type="text" [(ngModel)]='eventDate' name="eventDate" placeholder="Type event date here...."></h4>
     <h3></h3>
     <h4> Location: </h4>
-    <select>
-        <option disabled selected value> -- select an option -- </option>
-        <option *ngFor="let location of locations" [ngValue]="location">{{location.name}}</option>
+        <select (change)="selectLocation($event.target.value)">
+            <option disabled selected value> -- select an option -- </option>
+            <option *ngFor="let location of locations" value={{location.id}}>{{location.name}}</option>
     </select>
     <h3></h3>
     <button style = "color:blue" routerLink="/adduser" class="button" type="submit" (click)="onSubmit()" >ADD USERS</button>

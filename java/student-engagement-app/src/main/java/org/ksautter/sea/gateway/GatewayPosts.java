@@ -64,12 +64,12 @@ public class GatewayPosts {
 	        System.out.println(message);
 	        //String date_time = obj.getString("date_time");
 	        //System.out.println(date_time);
-	        String fk_user = obj.getString("fk_user_id");
-	        System.out.println(fk_user);
+	       // String fk_user = obj.getString("fk_user_id");
+	        //System.out.println(fk_user);
 	        String fk_events = obj.getString("fk_events_id");
 	        System.out.println(fk_events);
 	        
-	        int user = Integer.parseInt(fk_user);
+	       // int user = Integer.parseInt(fk_user);
 	        int events = Integer.parseInt(fk_events);
 	        SimpleDateFormat timestamp = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
 	        
@@ -77,6 +77,8 @@ public class GatewayPosts {
 	        
 	       // Date newDate = timestamp.parse(date_time);
 	        ServerUsers userRequest = new ServerUsers();
+	        
+	        int user = loginstore.getID(arrOfStr[1]);
 	        
 	        Post newPost = new Post();
 	        newPost.setMsg(message);

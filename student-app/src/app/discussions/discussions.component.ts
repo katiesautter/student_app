@@ -53,7 +53,7 @@ export class DiscussionsComponent implements OnInit {
 
     console.log("creating a new event" + this.eventTitle);
     //'11-12-2019 21:08:44'
-    this.http.post<any>(this.seaService.restUrl() + "Events/", { title: this.eventTitle, date_time: this.eventDate, status: 'private', location_id: '3'})
+    this.http.post<any>(this.seaService.restUrl() + "Events/", { title: this.eventTitle, date_time: this.eventDate, status: 'private', location_id: this.selectedLocation})
         .subscribe( response => { 
           this.eventTitle = response.title;
           this.eventDate = response.date_time;
@@ -76,4 +76,8 @@ export class DiscussionsComponent implements OnInit {
        
   }
 
+  selectLocation(id)
+  {
+    this.selectedLocation = id;
+  }
 }

@@ -178,13 +178,16 @@ public class GatewayEvents {
         System.out.println(status);
         String date_time = obj.getString("date_time");
         System.out.println(date_time);
-        String location_id  = obj.getString("location_id");
+        String location_id = obj.getString("location_id");
         System.out.println(location_id);
         
         SimpleDateFormat timestamp = new SimpleDateFormat("MM-dd-yyyy");
         Date date = timestamp.parse(date_time);
-       
         
+        //ServerLocations location2 = new ServerLocations();
+        //int i = location2.getLoc(location_id);
+        
+        	
         int i = Integer.parseInt(location_id);
         
         

@@ -40,4 +40,15 @@ public class ServerLocations {
 		
 	}
 	
+	public int getLoc(String name)
+	{
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.openSession();		
+		session.beginTransaction();
+		Location location = session.get(Location.class, name);
+		int id = location.getId();
+		return id;
+		
+	}
+	
 }

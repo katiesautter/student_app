@@ -84,7 +84,7 @@ export class EventDetailsComponent implements OnInit {
 
     console.log("creating a new post" + this.postInfo);
     //'11-12-2019 21:08:44'
-    this.http.post<any>(this.seaService.restUrl() + "Posts/", { message: this.postInfo, fk_user_id: '3', fk_events_id: this.id})
+    this.http.post<any>(this.seaService.restUrl() + "Posts/", { message: this.postInfo, fk_events_id: this.id})
         .subscribe( response => { 
           console.log("return from get posts for event");
           this.postInfo = response.message;

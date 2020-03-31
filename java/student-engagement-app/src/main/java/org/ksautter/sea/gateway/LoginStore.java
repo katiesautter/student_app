@@ -25,6 +25,12 @@ public class LoginStore {
 		return hmap.containsKey(token);
 	}
 	
+	public int getID(String token)
+	{
+		int value = hmap.get(token);
+		return value;
+	}
+	
 	public void removeUser(String token, int id)
 	{
 		hmap.remove(token, id);
